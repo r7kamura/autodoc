@@ -43,7 +43,6 @@ POST /recipes
 * `name` string (required)
 * `type` integer
 
-
 ### response
 ```
 Status: 201
