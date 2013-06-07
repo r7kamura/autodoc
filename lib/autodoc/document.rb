@@ -35,7 +35,7 @@ module Autodoc
 
     def parameters_section
       if has_validators?
-        "\n### parameters\n#{parameters}\n\n"
+        "\n### parameters\n#{parameters}\n"
       end
     end
 
