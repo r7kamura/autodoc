@@ -2,9 +2,8 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "weak_parameters"
-
 group :test do
   gem "pry-rails"
   gem "rspec-rails"
+  gem "weak_parameters"
 end

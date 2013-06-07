@@ -46,7 +46,7 @@ describe "Recipes" do
       end
     end
 
-    context "with valid condition" do
+    context "with valid condition", :autodoc do
       it "creates a new recipe" do
         post "/recipes", params, env
         response.status.should == 201
