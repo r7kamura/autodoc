@@ -1,5 +1,5 @@
 # Autodoc
-Auto-generate API documents from your request-specs.
+Auto-generate JSON API documents from your request-specs.
 
 ## Installation
 ```ruby
@@ -23,7 +23,7 @@ describe "Recipes" do
 
   describe "POST /recipes", autodoc: true do
     it "creates a new recipe" do
-      post "/recipes", params
+      post "/recipes.json", params
     end
   end
 end
