@@ -24,6 +24,7 @@ describe "Recipes" do
   describe "POST /recipes", autodoc: true do
     it "creates a new recipe" do
       post "/recipes.json", params
+      response.status.should == 201
     end
   end
 end
