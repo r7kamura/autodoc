@@ -52,7 +52,8 @@ response:
 {
   "created_at" => "2013-06-07T08:28:35Z",
           "id" => 1,
-        "name" => "name",
+        "name" => "alice",
+        "type" => 1,
   "updated_at" => "2013-06-07T08:28:35Z"
 }
 ```
