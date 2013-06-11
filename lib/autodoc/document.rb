@@ -70,7 +70,7 @@ __END__
 ```
 <%= parameters_section %>
 ### response
-```
+```ruby
 Status: <%= response.status %><%= headers %>
 response: <%= request_body %>
 ```
