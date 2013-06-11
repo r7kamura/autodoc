@@ -1,10 +1,17 @@
 require "autodoc/collector"
+require "autodoc/configuration"
 require "autodoc/document"
 require "autodoc/version"
 
 module Autodoc
-  def self.collector
-    @collector ||= Autodoc::Collector.new
+  class << self
+    def collector
+      @collector ||= Autodoc::Collector.new
+    end
+
+    def configuration
+      @configuration ||= Autodoc::Configuration.new
+    end
   end
 end
 

@@ -53,12 +53,10 @@ module Autodoc
       WeakParameters.stats[request.params[:controller]][request.params[:action]].try(:validators)
     end
 
-    def link
-      "\nLink: #{response.header['Link']}" if response.header["Link"]
-    end
-
-    def location
-      "\nlocation: #{response.location}" if response.location
+    def headers
+      Autodoc.configuration.headers.map do |header|
+        "\n#{header}: #{response.headers[header]}" if response.headers[header]
+      end.compact.join
     end
   end
 end
@@ -73,7 +71,7 @@ __END__
 <%= parameters_section %>
 ### response
 ```
-Status: <%= response.status %><%= link %><%= location %>
+Status: <%= response.status %><%= headers %>
 response: <%= request_body %>
 ```
 
