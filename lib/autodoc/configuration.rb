@@ -14,7 +14,7 @@ module Autodoc
     end
 
     def reset
-      @headers = %w[Link location]
+      @headers = %w[location]
     end
   end
 end
