@@ -29,7 +29,7 @@ module Autodoc
 
     # request.body can be "" (e.g. in PUT and DELETE request)
     def request_body
-      "\n" + JSON.parse(response.body).ai(plain: true, indent: 2, index: false)
+      "\n" + JSON.parse(response.body).ai(plain: true, indent: -2, index: false)
     rescue JSON::ParserError
     end
 
