@@ -40,9 +40,7 @@ module Autodoc
     end
 
     def parameters
-      validators.map do |validator|
-        "* `#{validator.key}` #{validator.type}#{' (required)' if validator.required?}"
-      end.join("\n")
+      validators.map {|validator| Parameter.new(validator) }.join("\n")
     end
 
     def has_validators?
@@ -57,6 +55,44 @@ module Autodoc
       Autodoc.configuration.headers.map do |header|
         "\n#{header}: #{response.headers[header]}" if response.headers[header]
       end.compact.join
+    end
+
+    class Parameter
+      attr_reader :validator
+
+      def initialize(validator)
+        @validator = validator
+      end
+
+      def to_s
+        "#{body}#{payload}"
+      end
+
+      private
+
+      def body
+        "* `#{validator.key}` #{validator.type}"
+      end
+
+      def payload
+        " (#{assets.join(', ')})" if assets.any?
+      end
+
+      def assets
+        @assets ||= [required, only, except].compact
+      end
+
+      def required
+        "required" if validator.required?
+      end
+
+      def only
+        "only: `#{validator.options[:only].inspect}`" if validator.options[:only]
+      end
+
+      def except
+        "except: `#{validator.options[:except].inspect}`" if validator.options[:except]
+      end
     end
   end
 end
