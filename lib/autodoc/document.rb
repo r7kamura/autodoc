@@ -99,7 +99,7 @@ end
 
 __END__
 ## <%= request.method %> <%= path %>
-<%= example.description.camelize %>
+<%= example.full_description %>.
 
 ```
 <%= request.method %> <%= request.path %>

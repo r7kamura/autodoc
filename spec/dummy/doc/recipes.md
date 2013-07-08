@@ -1,5 +1,5 @@
 ## POST /recipes
-Creates a new recipe
+Recipes POST /recipes with valid condition creates a new recipe.
 
 ```
 POST /recipes
@@ -15,10 +15,10 @@ Status: 201
 location: http://www.example.com/recipes/1
 response: 
 {
-  "created_at" => "2013-06-18T06:33:40Z",
+  "created_at" => "2013-07-08T05:58:47Z",
   "id"         => 1,
   "name"       => "name",
-  "updated_at" => "2013-06-18T06:33:40Z"
+  "updated_at" => "2013-07-08T05:58:47Z"
 }
 ```
 
