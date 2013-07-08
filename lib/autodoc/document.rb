@@ -27,8 +27,7 @@ module Autodoc
       example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
     end
 
-    # request.body can be "" (e.g. in PUT and DELETE request)
-    def request_body
+    def response_body
       "\n" + JSON.parse(response.body).ai(plain: true, indent: -2, index: false)
     rescue JSON::ParserError
     end
@@ -108,6 +107,6 @@ __END__
 ### response
 ```ruby
 Status: <%= response.status %><%= headers %>
-response: <%= request_body %>
+response: <%= response_body %>
 ```
 
