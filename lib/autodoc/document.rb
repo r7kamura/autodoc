@@ -112,7 +112,7 @@ end
 
 __END__
 ## <%= request.method %> <%= path %>
-<%= example.full_description %>.
+<%= example.description.capitalize %>.
 <%= parameters_section %>
 ### request
 ```

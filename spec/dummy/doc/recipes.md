@@ -1,5 +1,5 @@
 ## POST /recipes
-Recipes POST /recipes with valid condition creates a new recipe.
+Creates a new recipe.
 
 ### parameters
 * `name` string (required, except: `["alice", "bob"]`)
@@ -20,10 +20,10 @@ Status: 201
 location: http://www.example.com/recipes/1
 response: 
 {
-  "created_at" => "2013-07-08T06:11:46Z",
+  "created_at" => "2013-07-08T06:28:40Z",
   "id"         => 1,
   "name"       => "name",
-  "updated_at" => "2013-07-08T06:11:46Z"
+  "updated_at" => "2013-07-08T06:28:40Z"
 }
 ```
 
