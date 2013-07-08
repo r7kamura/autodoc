@@ -32,6 +32,12 @@ module Autodoc
     rescue JSON::ParserError
     end
 
+    def request_body_section
+      if has_request_body?
+        "\n```\n#{request_body}\n```\n"
+      end
+    end
+
     def parameters_section
       if has_validators?
         "\n### parameters\n#{parameters}\n"
@@ -40,6 +46,14 @@ module Autodoc
 
     def parameters
       validators.map {|validator| Parameter.new(validator) }.join("\n")
+    end
+
+    def request_body
+      request.body.string
+    end
+
+    def has_request_body?
+      request_body.present?
     end
 
     def has_validators?
@@ -99,11 +113,12 @@ end
 __END__
 ## <%= request.method %> <%= path %>
 <%= example.full_description %>.
-
+<%= parameters_section %>
+### request
 ```
 <%= request.method %> <%= request.path %>
 ```
-<%= parameters_section %>
+<%= request_body_section %>
 ### response
 ```ruby
 Status: <%= response.status %><%= headers %>
