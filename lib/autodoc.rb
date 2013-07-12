@@ -26,7 +26,9 @@ if ENV["AUTODOC"] && defined?(RSpec)
     config.after(:suite) do
       Autodoc.collector.documents.each do |filepath, documents|
         filepath = filepath.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
-        pathname = Rails.root + "doc/#{filepath}"
+        pathname = Rails.root.join("doc")
+        pathname += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
+        pathname += filepath
         pathname.parent.mkpath
         pathname.open("w") {|file| file << documents.join("\n") }
       end
