@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Autodoc::VERSION
   spec.authors       = ["Ryo Nakamura"]
   spec.email         = ["r7kamura@gmail.com"]
-  spec.summary       = "Auto-generate API documents from your request-specs."
+  spec.summary       = "Auto-generate JSON API documents from your request-specs."
   spec.homepage      = "https://github.com/r7kamura/autodoc"
   spec.license       = "MIT"
 
