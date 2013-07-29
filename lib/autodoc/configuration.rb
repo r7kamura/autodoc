@@ -15,7 +15,22 @@ module Autodoc
 
     def reset
       @headers = %w[location]
-      @template = nil
+      @template = <<-EOF.strip_heredoc
+        ## <%= method %> <%= path %>
+        <%= description %>
+        <%= parameters_section %>
+        ### request
+        ```
+        <%= method %> <%= path %>
+        ```
+        <%= request_body_section %>
+        ### response
+        ```ruby
+        Status: <%= response_status %><%= response_headers %>
+        response: <%= response_body %>
+        ```
+
+      EOF
     end
   end
 end

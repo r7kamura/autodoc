@@ -14,14 +14,10 @@ module Autodoc
     end
 
     def render
-      ERB.new(template).result(binding)
+      ERB.new(Autodoc.configuration.template).result(binding)
     end
 
     private
-
-    def template
-      Autodoc.configuration.template || File.read(__FILE__).split("__END__\n", 2).last
-    end
 
     def description
       "#{example.description.capitalize}."
@@ -121,19 +117,3 @@ module Autodoc
     end
   end
 end
-
-__END__
-## <%= method %> <%= path %>
-<%= description %>
-<%= parameters_section %>
-### request
-```
-<%= method %> <%= path %>
-```
-<%= request_body_section %>
-### response
-```ruby
-Status: <%= response_status %><%= response_headers %>
-response: <%= response_body %>
-```
-
