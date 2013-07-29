@@ -60,7 +60,7 @@ response:
 </pre>
 
 ## Custom template
-You can customize autodoc's template ([Example](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/document.rb#L126-L139)).
+You can customize autodoc's template ([Example](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/configuration.rb#L18-L33)).
 Here are avilable variables:
 
 * description
