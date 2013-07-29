@@ -14,7 +14,7 @@ module Autodoc
     end
 
     def render
-      ERB.new(Autodoc.configuration.template).result(binding)
+      ERB.new(Autodoc.configuration.template, nil, "-").result(binding)
     end
 
     private
