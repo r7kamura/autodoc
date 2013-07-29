@@ -58,3 +58,35 @@ response:
 }
 ```
 </pre>
+
+## Custom template
+You can customize autodoc's template.
+Here are avilable variables:
+
+* description
+* method
+* parameters_section
+* path
+* request_body_section
+* response_body
+* response_headers
+* response_status
+
+```ruby
+Autodoc.configuration.template = <<-EOF
+  ## <%= request.method %> <%= path %>
+  <%= example.description.capitalize %>.
+  <%= parameters_section %>
+  ### request
+  ```
+  <%= request.method %> <%= request.path %>
+  ```
+  <%= request_body_section %>
+  ### response
+  ```ruby
+  Status: <%= response.status %><%= headers %>
+  response: <%= response_body %>
+  ```
+
+EOF
+```

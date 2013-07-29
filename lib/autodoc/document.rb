@@ -20,7 +20,15 @@ module Autodoc
     private
 
     def template
-      File.read(__FILE__).split("__END__\n", 2).last
+      Autodoc.configuration.template || File.read(__FILE__).split("__END__\n", 2).last
+    end
+
+    def description
+      "#{example.description.capitalize}."
+    end
+
+    def method
+      request.method
     end
 
     def path
@@ -44,6 +52,10 @@ module Autodoc
       end
     end
 
+    def response_status
+      response.status
+    end
+
     def parameters
       validators.map {|validator| Parameter.new(validator) }.join("\n")
     end
@@ -64,7 +76,7 @@ module Autodoc
       WeakParameters.stats[request.params[:controller]][request.params[:action]].try(:validators)
     end
 
-    def headers
+    def response_headers
       Autodoc.configuration.headers.map do |header|
         "\n#{header}: #{response.headers[header]}" if response.headers[header]
       end.compact.join
@@ -111,17 +123,17 @@ module Autodoc
 end
 
 __END__
-## <%= request.method %> <%= path %>
-<%= example.description.capitalize %>.
+## <%= method %> <%= path %>
+<%= description %>
 <%= parameters_section %>
 ### request
 ```
-<%= request.method %> <%= request.path %>
+<%= method %> <%= path %>
 ```
 <%= request_body_section %>
 ### response
 ```ruby
-Status: <%= response.status %><%= headers %>
+Status: <%= response_status %><%= response_headers %>
 response: <%= response_body %>
 ```
 

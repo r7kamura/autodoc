@@ -7,7 +7,7 @@
 #
 module Autodoc
   class Configuration
-    attr_accessor :headers
+    attr_accessor :headers, :template
 
     def initialize
       reset
@@ -15,6 +15,7 @@ module Autodoc
 
     def reset
       @headers = %w[location]
+      @template = nil
     end
   end
 end
