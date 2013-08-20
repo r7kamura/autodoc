@@ -20,10 +20,9 @@ Status: 201
 location: http://www.example.com/recipes/1
 response: 
 {
-  "created_at" => "2013-07-08T06:28:40Z",
+  "created_at" => "2013-08-20T08:30:18Z",
   "id"         => 1,
   "name"       => "name",
-  "updated_at" => "2013-07-08T06:28:40Z"
+  "updated_at" => "2013-08-20T08:30:18Z"
 }
 ```
-
