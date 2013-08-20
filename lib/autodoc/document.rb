@@ -43,7 +43,7 @@ module Autodoc
     end
 
     def parameters_section
-      if has_validators?
+      if has_validators? && parameters.present?
         "\n### parameters\n#{parameters}\n"
       end
     end
