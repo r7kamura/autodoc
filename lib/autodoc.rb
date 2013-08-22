@@ -30,7 +30,7 @@ if ENV["AUTODOC"] && defined?(RSpec)
         pathname += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
         pathname += filepath
         pathname.parent.mkpath
-        pathname.open("w") {|file| file << documents.join("\n").rstrip }
+        pathname.open("w") {|file| file << documents.join("\n").rstrip + "\n" }
       end
     end
   end
