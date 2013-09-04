@@ -96,7 +96,10 @@ module Autodoc
       end
 
       def payload
-        " (#{assets.join(', ')})" if assets.any?
+        string = ""
+        string << " (#{assets.join(', ')})" if assets.any?
+        string << " - #{validator.options[:description]}" if validator.options[:description]
+        string
       end
 
       def assets
