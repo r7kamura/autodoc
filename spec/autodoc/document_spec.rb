@@ -43,7 +43,7 @@ describe Autodoc::Document do
     end
 
     let(:response_body) do
-      {}.to_json
+      { name: "recipe 1" }.to_json
     end
 
     context "without Autodoc.configuration.template" do
@@ -61,7 +61,9 @@ describe Autodoc::Document do
           ```ruby
           Status: 200
           response: 
-          {}
+          {
+            "name": "recipe 1"
+          }
           ```
 
         EOF
@@ -103,7 +105,9 @@ describe Autodoc::Document do
           ```ruby
           Status: 200
           response: 
-          {}
+          {
+            "name": "recipe 1"
+          }
           ```
 
           ## GET /recipes/1

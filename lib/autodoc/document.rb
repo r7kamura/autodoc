@@ -32,7 +32,7 @@ module Autodoc
     end
 
     def response_body
-      "\n" + JSON.parse(response.body).ai(plain: true, indent: -2, index: false)
+      "\n" + JSON.pretty_generate(JSON.parse(response.body))
     rescue JSON::ParserError
     end
 
