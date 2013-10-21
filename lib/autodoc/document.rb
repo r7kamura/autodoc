@@ -24,7 +24,7 @@ module Autodoc
     end
 
     def method
-      request.method
+      request["REQUEST_METHOD"]
     end
 
     def path
@@ -34,6 +34,7 @@ module Autodoc
     def response_body
       "\n" + JSON.pretty_generate(JSON.parse(response.body))
     rescue JSON::ParserError
+      response.body
     end
 
     def request_body_section
