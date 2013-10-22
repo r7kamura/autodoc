@@ -74,7 +74,11 @@ module Autodoc
     end
 
     def validators
-      WeakParameters.stats[request.params[:controller]][request.params[:action]].try(:validators)
+      if defined?(Sinatra)
+        WeakParameters.stats[method][path].try(:validators)
+      else
+        WeakParameters.stats[request.params[:controller]][request.params[:action]].try(:validators)
+      end
     end
 
     def response_headers
