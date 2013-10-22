@@ -25,7 +25,7 @@ module Autodoc
 
     def method
       if defined?(Sinatra)
-        request["REQUEST_METHOD"]
+        request.env["REQUEST_METHOD"]
       else
         request.method
       end
