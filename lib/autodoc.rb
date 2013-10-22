@@ -21,15 +21,22 @@ if ENV["AUTODOC"] && defined?(RSpec)
   RSpec.configure do |config|
     config.after(:each, type: :request) do
       if example.metadata[:autodoc]
-        Autodoc.collector.collect(example, last_request, last_response)
+        if defined?(Sinatra)
+          Autodoc.collector.collect(example, last_request, last_response)
+        else
+          Autodoc.collector.collect(example, request, respons)
+        end
       end
     end
 
     config.after(:suite) do
       Autodoc.collector.documents.each do |filepath, documents|
         filepath = filepath.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
-        
-        pathname = Pathname.new(Autodoc.application_root).join("doc")
+        if defined?(Sinatra)
+          pathname = Pathname.new(Autodoc.application_root).join("doc")
+        else
+          pathname = Rails.root.join("doc")
+        end
         pathname += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
         pathname += filepath
         pathname.parent.mkpath

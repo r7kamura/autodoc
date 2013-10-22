@@ -24,7 +24,11 @@ module Autodoc
     end
 
     def method
-      request["REQUEST_METHOD"]
+      if defined?(Sinatra)
+        request["REQUEST_METHOD"]
+      else
+        request.method
+      end
     end
 
     def path
