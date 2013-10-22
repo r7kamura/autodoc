@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   validates :create do
     string :name, required: true, except: %w[alice bob]
-    integer :type, only: "1".."3"
+    integer :type, only: 1..3
   end
 
   def show
