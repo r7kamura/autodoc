@@ -1,6 +1,7 @@
 require "autodoc/collector"
 require "autodoc/configuration"
 require "autodoc/document"
+require "autodoc/transaction"
 require "autodoc/version"
 
 module Autodoc
@@ -19,7 +20,8 @@ if ENV["AUTODOC"] && defined?(RSpec)
   RSpec.configure do |config|
     config.after(:each, type: :request) do
       if example.metadata[:autodoc]
-        Autodoc.collector.collect(example, request, response)
+        txn = Autodoc::Transaction.build(self)
+        Autodoc.collector.collect(example, txn)
       end
     end
 
