@@ -1,7 +1,7 @@
 module Autodoc
   class Collector
-    def collect(example, request, response)
-      documents[example.file_path] << Autodoc::Document.render(example, request, response)
+    def collect(example, txn)
+      documents[example.file_path] << Autodoc::Document.render(example, txn)
     end
 
     def documents

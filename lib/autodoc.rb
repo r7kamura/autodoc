@@ -1,6 +1,7 @@
 require "autodoc/collector"
 require "autodoc/configuration"
 require "autodoc/document"
+require "autodoc/transaction"
 require "autodoc/version"
 
 module Autodoc
@@ -24,7 +25,8 @@ if ENV["AUTODOC"] && defined?(RSpec)
         if defined?(Sinatra)
           Autodoc.collector.collect(example, last_request, last_response)
         else
-          Autodoc.collector.collect(example, request, respons)
+          txn = Autodoc::Transaction.build(self)
+          Autodoc.collector.collect(example, txn)
         end
       end
     end

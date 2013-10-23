@@ -52,5 +52,17 @@ describe "Recipes" do
         response.status.should == 201
       end
     end
+
+    context "with valid condition (client using Rack::Test)", :autodoc do
+      include Rack::Test::Methods
+      before do
+        header 'Accept', 'application/json'
+      end
+
+      it "creates a new recipe" do
+        post "/recipes", params
+        last_response.status.should == 201
+      end
+    end
   end
 end

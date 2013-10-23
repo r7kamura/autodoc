@@ -7,10 +7,13 @@ module Autodoc
       new(*args).render
     end
 
-    attr_reader :example, :request, :response
+    attr_reader :example, :transaction
 
-    def initialize(example, request, response)
-      @example, @request, @response = example, request, response
+    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
+      to: :transaction
+
+    def initialize(example, txn)
+      @example, @transaction = example, txn
     end
 
     def render
@@ -23,20 +26,12 @@ module Autodoc
       "#{example.description.capitalize}."
     end
 
-    def method
-      if defined?(Sinatra)
-        request.env["REQUEST_METHOD"]
-      else
-        request.method
-      end
-    end
-
     def path
       example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
     end
 
     def response_body
-      "\n" + JSON.pretty_generate(JSON.parse(response.body))
+      "\n" + JSON.pretty_generate(JSON.parse(response_body_raw))
     rescue JSON::ParserError
       response.body
     end
@@ -53,16 +48,8 @@ module Autodoc
       end
     end
 
-    def response_status
-      response.status
-    end
-
     def parameters
       validators.map {|validator| Parameter.new(validator) }.join("\n")
-    end
-
-    def request_body
-      request.body.string
     end
 
     def has_request_body?
@@ -77,13 +64,13 @@ module Autodoc
       if defined?(Sinatra)
         WeakParameters.stats[method][request.env["PATH_INFO"]].try(:validators)
       else
-        WeakParameters.stats[request.params[:controller]][request.params[:action]].try(:validators)
+        WeakParameters.stats[controller][action].try(:validators)
       end
     end
 
     def response_headers
       Autodoc.configuration.headers.map do |header|
-        "\n#{header}: #{response.headers[header]}" if response.headers[header]
+        "\n#{header}: #{response_header(header)}" if response_header(header)
       end.compact.join
     end
 
