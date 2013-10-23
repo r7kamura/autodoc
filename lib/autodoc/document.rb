@@ -75,7 +75,7 @@ module Autodoc
 
     def validators
       if defined?(Sinatra)
-        WeakParameters.stats[method][path].try(:validators)
+        WeakParameters.stats[method][request.env["PATH_INFO"]].try(:validators)
       else
         WeakParameters.stats[request.params[:controller]][request.params[:action]].try(:validators)
       end
