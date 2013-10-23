@@ -1,10 +1,10 @@
 module Autodoc
   class Transaction
     def self.build(context)
-      if defined?(Rack::Test::Methods) && context.class.ancestors.include?(Rack::Test::Methods)
+      if defined?(ActionDispatch::Request) && defined?(Rack::Test::Methods) && context.class.ancestors.include?(Rack::Test::Methods)
         self.new(ActionDispatch::Request.new(context.last_request.env), context.last_response)
       else
-        self.new(context.request, context.response)
+        self.new(context.last_request, context.last_response)
       end
     end
 
@@ -15,7 +15,11 @@ module Autodoc
     end
 
     def method
-      request.method
+      if defined?(Sinatra)
+        request.env["REQUEST_METHOD"]
+      else
+        request.method
+      end
     end
 
     def request_body

@@ -9,7 +9,7 @@ module Autodoc
 
     attr_reader :example, :transaction
 
-    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
+    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action, :request,
       to: :transaction
 
     def initialize(example, txn)
@@ -33,7 +33,8 @@ module Autodoc
     def response_body
       "\n" + JSON.pretty_generate(JSON.parse(response_body_raw))
     rescue JSON::ParserError
-      response.body
+      "\n" + Nokogiri::XML(response_body_raw){ |config| config.strict }.to_xml
+    rescue Nokogiri::XML::SyntaxError
     end
 
     def request_body_section
