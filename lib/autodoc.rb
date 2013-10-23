@@ -22,12 +22,8 @@ if ENV["AUTODOC"] && defined?(RSpec)
   RSpec.configure do |config|
     config.after(:each, type: :request) do
       if example.metadata[:autodoc]
-        if defined?(Sinatra)
-          Autodoc.collector.collect(example, last_request, last_response)
-        else
-          txn = Autodoc::Transaction.build(self)
-          Autodoc.collector.collect(example, txn)
-        end
+        txn = Autodoc::Transaction.build(self)
+        Autodoc.collector.collect(example, txn)
       end
     end
 

@@ -1,3 +1,4 @@
+require "active_support/core_ext"
 require "awesome_print"
 require "erb"
 
@@ -9,7 +10,7 @@ module Autodoc
 
     attr_reader :example, :transaction
 
-    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
+    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action, :request,
       to: :transaction
 
     def initialize(example, txn)
@@ -33,7 +34,6 @@ module Autodoc
     def response_body
       "\n" + JSON.pretty_generate(JSON.parse(response_body_raw))
     rescue JSON::ParserError
-      response.body
     end
 
     def request_body_section
