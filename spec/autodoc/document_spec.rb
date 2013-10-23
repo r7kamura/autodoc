@@ -3,7 +3,7 @@ require "spec_helper"
 describe Autodoc::Document do
   describe ".render" do
     subject do
-      described_class.render(example, request, response)
+      described_class.render(example, transaction)
     end
 
     let(:example) do
@@ -32,6 +32,10 @@ describe Autodoc::Document do
         headers: {},
         status: 200,
       )
+    end
+
+    let(:transaction) do
+      Autodoc::Transaction.new(request, response)
     end
 
     let(:method) do

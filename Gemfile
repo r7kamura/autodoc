@@ -7,4 +7,5 @@ group :test do
   gem "rspec-rails"
   gem "weak_parameters"
   gem "protected_attributes"
+  gem "rack-test"
 end
