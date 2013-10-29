@@ -40,7 +40,15 @@ end
 
 ```
 
-and the following document is generated in [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md).
+### Sinatra config
+Add Autodoc.application_root to spec_helper
+
+```ruby
+Autodoc.application_root = File.expand_path( __dir__ + "/../")
+```
+
+## Result
+The following document is generated in [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md).
 
 <pre>
 ## POST /recipes
