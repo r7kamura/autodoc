@@ -30,7 +30,7 @@ class App < Sinatra::Base
     [201, { "Content-Type" => "text/xml; charset=utf-8"}, Recipe.create(params).to_xml]
   end
   
-  def validation_error exception
+  def validation_error exception, env
     [400, { "Content-Type" => "text/xml; charset=utf-8" }, [ "<error>#{exception.message}</error>"]]
   end
 
