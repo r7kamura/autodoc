@@ -16,6 +16,7 @@ module Autodoc
     def reset
       @headers = %w[location]
       @template = <<-EOF.strip_heredoc
+        <%# coding: UTF-8 -%>
         ## <%= method %> <%= path %>
         <%= description %>
         <%= parameters_section %>
