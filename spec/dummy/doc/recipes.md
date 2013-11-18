@@ -10,9 +10,10 @@ Creates a new recipe.
 POST /recipes
 ```
 
+#### request.params
 
 ```
-{"name"=>"name", "type"=>"1", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fee7812fa20 @tempfile=#<Tempfile:/var/folders/b2/t0bfhlx94fjcfbwwrz4gp8x80000gn/T/RackMultipart20131119-38803-1o07dho>, @original_filename="sample_image1.jpg", @content_type="image/jpg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample_image1.jpg\"\r\nContent-Type: image/jpg\r\nContent-Length: 12608\r\n">, "action"=>"create", "controller"=>"recipes"}
+{"name"=>"name", "type"=>"1", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f874d96ba00 @tempfile=#<Tempfile:/var/folders/b2/t0bfhlx94fjcfbwwrz4gp8x80000gn/T/RackMultipart20131119-39611-199g120>, @original_filename="sample_image1.jpg", @content_type="image/jpg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample_image1.jpg\"\r\nContent-Type: image/jpg\r\nContent-Length: 12608\r\n">, "action"=>"create", "controller"=>"recipes"}
 ```
 
 
@@ -24,8 +25,8 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-18T17:25:56.734Z",
-  "updated_at": "2013-11-18T17:25:56.734Z"
+  "created_at": "2013-11-18T17:46:38.870Z",
+  "updated_at": "2013-11-18T17:46:38.870Z"
 }
 ```
 
@@ -42,9 +43,10 @@ Creates a new recipe.
 POST /recipes
 ```
 
+#### request.params
 
 ```
-{"name"=>"name", "type"=>"1", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fee7823d8b8 @tempfile=#<Tempfile:/var/folders/b2/t0bfhlx94fjcfbwwrz4gp8x80000gn/T/RackMultipart20131119-38803-p45ki9>, @original_filename="sample_image1.jpg", @content_type="image/jpg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample_image1.jpg\"\r\nContent-Type: image/jpg\r\nContent-Length: 12608\r\n">, "action"=>"create", "controller"=>"recipes"}
+{"name"=>"name", "type"=>"1", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f874a1b1858 @tempfile=#<Tempfile:/var/folders/b2/t0bfhlx94fjcfbwwrz4gp8x80000gn/T/RackMultipart20131119-39611-1tgd5t2>, @original_filename="sample_image1.jpg", @content_type="image/jpg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"sample_image1.jpg\"\r\nContent-Type: image/jpg\r\nContent-Length: 12608\r\n">, "action"=>"create", "controller"=>"recipes"}
 ```
 
 
@@ -57,7 +59,7 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-18T17:25:56.741Z",
-  "updated_at": "2013-11-18T17:25:56.741Z"
+  "created_at": "2013-11-18T17:46:38.878Z",
+  "updated_at": "2013-11-18T17:46:38.878Z"
 }
 ```
