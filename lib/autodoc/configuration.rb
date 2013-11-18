@@ -24,7 +24,11 @@ module Autodoc
         ```
         <%= method %> <%= path %>
         ```
+        <% if ENV["INCLUDE_IMAGE"] == "1" %>
+        <%= request_params_section %>
+        <% else %>
         <%= request_body_section %>
+        <% end %>
         ### response
         ```ruby
         Status: <%= response_status %><%= response_headers %>
