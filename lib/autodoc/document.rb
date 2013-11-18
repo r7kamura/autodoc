@@ -9,7 +9,7 @@ module Autodoc
 
     attr_reader :example, :transaction
 
-    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
+    delegate :method, :request_body, :request_params, :response_status, :response_header, :response_body_raw, :controller, :action,
       to: :transaction
 
     def initialize(example, txn)
@@ -41,6 +41,12 @@ module Autodoc
       end
     end
 
+    def request_params_section
+      if has_request_params?
+        "\n```\n#{request_params}\n```\n"
+      end
+    end
+
     def parameters_section
       if has_validators? && parameters.present?
         "\n### parameters\n#{parameters}\n"
@@ -53,6 +59,10 @@ module Autodoc
 
     def has_request_body?
       request_body.present?
+    end
+
+    def has_request_params?
+      request_params.present?
     end
 
     def has_validators?

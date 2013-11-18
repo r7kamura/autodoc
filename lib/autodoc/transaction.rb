@@ -22,6 +22,10 @@ module Autodoc
       request.body.string
     end
 
+    def request_params
+      request.params
+    end
+
     def response_status
       response.status
     end

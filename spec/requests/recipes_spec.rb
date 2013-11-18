@@ -9,6 +9,7 @@ describe "Recipes" do
     {
       name: "name",
       type: 1,
+      image: fixture_file_upload("#{Rails.root}/spec/files/sample_image1.jpg", 'image/jpg')
     }
   end
 
