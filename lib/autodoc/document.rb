@@ -1,3 +1,4 @@
+require "active_support/core_ext"
 require "awesome_print"
 require "erb"
 
@@ -9,7 +10,7 @@ module Autodoc
 
     attr_reader :example, :transaction
 
-    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
+    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action, :request,
       to: :transaction
 
     def initialize(example, txn)
@@ -60,7 +61,11 @@ module Autodoc
     end
 
     def validators
-      WeakParameters.stats[controller][action].try(:validators)
+      if defined?(Sinatra)
+        WeakParameters.stats[method][request.env["PATH_INFO"]].try(:validators)
+      else
+        WeakParameters.stats[controller][action].try(:validators)
+      end
     end
 
     def response_headers

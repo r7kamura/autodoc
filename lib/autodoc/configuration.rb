@@ -5,6 +5,8 @@
 #   # response.headers["X-Content-Type-Options"] will be documented.
 #   Autodoc.configuration.headers << "X-Content-Type-Options"
 #
+require 'active_support/core_ext/string/strip'
+
 module Autodoc
   class Configuration
     attr_accessor :headers, :template

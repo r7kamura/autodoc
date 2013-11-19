@@ -27,10 +27,28 @@ describe "Recipes" do
       response.status.should == 201
     end
   end
+
+  # in sinatra, add :type => :request
+  describe "POST /recipes", :type => :request, autodoc: true do
+    it "creates a new recipe" do
+      post "/recipes.json", params
+      response.status.should == 201
+    end
+  end
 end
+
+
 ```
 
-and the following document is generated in [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md).
+### Sinatra config
+Add Autodoc.application_root to spec_helper
+
+```ruby
+Autodoc.application_root = File.expand_path( __dir__ + "/../")
+```
+
+## Result
+The following document is generated in [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md).
 
 <pre>
 ## POST /recipes
