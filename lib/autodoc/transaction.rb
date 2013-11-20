@@ -18,6 +18,10 @@ module Autodoc
       request.method
     end
 
+    def request_fullpath
+      request.fullpath
+    end
+
     def request_body
       request.body.string
     end

@@ -9,7 +9,7 @@ module Autodoc
 
     attr_reader :example, :transaction
 
-    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
+    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action, :request_fullpath,
       to: :transaction
 
     def initialize(example, txn)
@@ -27,7 +27,7 @@ module Autodoc
     end
 
     def path
-      example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
+      request_fullpath
     end
 
     def response_body
