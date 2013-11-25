@@ -31,14 +31,13 @@ module Autodoc
     end
 
     def response_body
-      "\n" + JSON.pretty_generate(JSON.parse(response_body_raw))
+      JSON.pretty_generate(JSON.parse(response_body_raw))
     rescue JSON::ParserError
     end
 
     def request_body_section
-      if has_request_body?
-        "\n```\n#{request_body}\n```\n"
-      end
+      JSON.pretty_generate(JSON.parse(request_body))
+    rescue JSON::ParserError
     end
 
     def parameters_section

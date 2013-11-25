@@ -24,11 +24,16 @@ module Autodoc
         ```
         <%= method %> <%= path %>
         ```
+        <% if request_body_section %>
+        ```
         <%= request_body_section %>
+        ```
+        <% end %>
         ### response
         ```ruby
         Status: <%= response_status %><%= response_headers %>
-        response: <%= response_body %>
+        response:
+        <%= response_body %>
         ```
 
       EOF
