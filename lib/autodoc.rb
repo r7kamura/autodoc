@@ -1,3 +1,4 @@
+require "rspec"
 require "autodoc/collector"
 require "autodoc/configuration"
 require "autodoc/document"
@@ -16,7 +17,7 @@ module Autodoc
   end
 end
 
-if ENV["AUTODOC"] && defined?(RSpec)
+if ENV["AUTODOC"]
   RSpec.configure do |config|
     config.after(:each, type: :request) do
       if example.metadata[:autodoc]
