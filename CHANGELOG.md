@@ -1,3 +1,6 @@
+## 0.2.1
+* fix load dependency on rspec
+
 ## 0.2.0
 * remove dependency on awesome_print
 
