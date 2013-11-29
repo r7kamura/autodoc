@@ -1,3 +1,6 @@
+## 0.2.2
+* fix default documented headers
+
 ## 0.2.1
 * fix load dependency on rspec
 
