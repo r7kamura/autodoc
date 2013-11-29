@@ -14,7 +14,7 @@ module Autodoc
     end
 
     def reset
-      @headers = %w[location]
+      @headers = %w[Location]
       @template = <<-EOF.strip_heredoc
         <%# coding: UTF-8 -%>
         ## <%= method %> <%= path %>
