@@ -1,3 +1,6 @@
+## 0.2.0
+* remove dependency on awesome_print
+
 ## 0.1.9
 * fix encoding error at ruby 1.9 or earlier versions
 
