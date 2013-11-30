@@ -1,3 +1,6 @@
+## 0.2.4
+* add Documents class
+
 ## 0.2.3
 * clean up dependencies & implementation
 
