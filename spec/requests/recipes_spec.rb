@@ -6,13 +6,30 @@ describe "Recipes" do
   end
 
   let(:params) do
-    {
-      name: "name",
-      type: 1,
-    }
+    {}
+  end
+
+  describe "GET /recipes/:id" do
+    let(:recipe) do
+      Recipe.create(name: "test", type: 2)
+    end
+
+    context "with valid condition (using Rack::Test)", :autodoc do
+      include Rack::Test::Methods
+
+      it "returns the recipe" do
+        get "/recipes/#{recipe.id}", params, env
+        last_response.status.should == 200
+      end
+    end
   end
 
   describe "POST /recipes" do
+    before do
+      params[:name] = "name"
+      params[:type] = 1
+    end
+
     context "without required param" do
       before do
         params.delete(:name)
@@ -50,18 +67,6 @@ describe "Recipes" do
       it "creates a new recipe" do
         post "/recipes", params, env
         response.status.should == 201
-      end
-    end
-
-    context "with valid condition (client using Rack::Test)", :autodoc do
-      include Rack::Test::Methods
-      before do
-        header 'Accept', 'application/json'
-      end
-
-      it "creates a new recipe" do
-        post "/recipes", params
-        last_response.status.should == 201
       end
     end
   end
