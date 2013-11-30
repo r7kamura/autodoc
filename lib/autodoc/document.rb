@@ -8,15 +8,8 @@ module Autodoc
 
     attr_reader :example
 
-    delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
-      to: :transaction
-
     def initialize(context)
       @context = context
-    end
-
-    def transaction
-      @transaction ||= Autodoc::Transaction.build(@context)
     end
 
     def render
@@ -24,6 +17,62 @@ module Autodoc
     end
 
     private
+
+    def request
+      @request ||= begin
+        if using_rack_test?
+          ActionDispatch::Request.new(@context.last_request.env)
+        else
+          @context.request
+        end
+      end
+    end
+
+    def response
+      @response ||= begin
+        if using_rack_test?
+          @context.last_response
+        else
+          @context.response
+        end
+      end
+    end
+
+    def method
+      request.method
+    end
+
+    def request_body
+      request.body.string
+    end
+
+    def response_status
+      response.status
+    end
+
+    def response_header(header)
+      response.headers[header]
+    end
+
+    def response_body_raw
+      response.body
+    end
+
+    def controller
+      request.params[:controller]
+    end
+
+    def action
+      request.params[:action]
+    end
+
+    def using_rack_test?
+      !!defined?(Rack::Test::Methods) && @context.class.ancestors.include?(Rack::Test::Methods)
+    end
+
+    def transaction
+      @transaction ||= Autodoc::Transaction.build(@context)
+    end
 
     def description
       "#{@context.example.description.capitalize}."

@@ -1,6 +1,5 @@
 require "autodoc/configuration"
 require "autodoc/document"
-require "autodoc/transaction"
 require "autodoc/version"
 require "autodoc/rspec" if ENV["AUTODOC"]
 
