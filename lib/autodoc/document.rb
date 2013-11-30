@@ -7,8 +7,6 @@ module Autodoc
       new(*args).render
     end
 
-    attr_reader :example
-
     def initialize(context)
       @context = context
     end

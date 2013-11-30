@@ -1,16 +1,17 @@
 require "autodoc/configuration"
 require "autodoc/document"
+require "autodoc/documents"
 require "autodoc/version"
 require "autodoc/rspec" if ENV["AUTODOC"]
 
 module Autodoc
   class << self
-    def contexts
-      @contexts ||= []
+    def documents
+      @documents ||= Documents.new
     end
 
     def configuration
-      @configuration ||= Autodoc::Configuration.new
+      @configuration ||= Configuration.new
     end
   end
 end
