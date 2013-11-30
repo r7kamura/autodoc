@@ -1,3 +1,4 @@
+require "action_dispatch/http/request"
 require "erb"
 
 module Autodoc
