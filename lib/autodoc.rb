@@ -25,8 +25,7 @@ if ENV["AUTODOC"]
     config.after(:suite) do
       table = Hash.new {|table, key| table[key] = [] }
       Autodoc.contexts.each do |context|
-        transaction = Autodoc::Transaction.build(context)
-        table[context.example.file_path] << Autodoc::Document.render(context.example, transaction)
+        table[context.example.file_path] << Autodoc::Document.render(context)
       end
 
       table.each do |path, documents|

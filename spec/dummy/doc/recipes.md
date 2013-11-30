@@ -23,8 +23,8 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-30T13:44:22.198Z",
-  "updated_at": "2013-11-30T13:44:22.198Z"
+  "created_at": "2013-11-30T13:59:21.061Z",
+  "updated_at": "2013-11-30T13:59:21.061Z"
 }
 ```
 
@@ -54,7 +54,7 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-30T13:44:22.207Z",
-  "updated_at": "2013-11-30T13:44:22.207Z"
+  "created_at": "2013-11-30T13:59:21.072Z",
+  "updated_at": "2013-11-30T13:59:21.072Z"
 }
 ```

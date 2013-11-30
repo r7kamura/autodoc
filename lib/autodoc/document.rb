@@ -6,13 +6,17 @@ module Autodoc
       new(*args).render
     end
 
-    attr_reader :example, :transaction
+    attr_reader :example
 
     delegate :method, :request_body, :response_status, :response_header, :response_body_raw, :controller, :action,
       to: :transaction
 
-    def initialize(example, txn)
-      @example, @transaction = example, txn
+    def initialize(context)
+      @context = context
+    end
+
+    def transaction
+      @transaction ||= Autodoc::Transaction.build(@context)
     end
 
     def render
@@ -22,11 +26,11 @@ module Autodoc
     private
 
     def description
-      "#{example.description.capitalize}."
+      "#{@context.example.description.capitalize}."
     end
 
     def path
-      example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
+      @context.example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
     end
 
     def response_body
