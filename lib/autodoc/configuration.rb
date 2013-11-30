@@ -15,23 +15,7 @@ module Autodoc
     end
 
     def template
-      @template ||= <<-EOF.strip_heredoc
-        <%# coding: UTF-8 -%>
-        ## <%= method %> <%= path %>
-        <%= description %>
-        <%= parameters_section %>
-        ### request
-        ```
-        <%= method %> <%= path %>
-        ```
-        <%= request_body_section %>
-        ### response
-        ```ruby
-        Status: <%= response_status %><%= response_headers %>
-        response: <%= response_body %>
-        ```
-
-      EOF
+      @template ||= File.read(File.expand_path("../template.md.erb", __FILE__))
     end
   end
 end
