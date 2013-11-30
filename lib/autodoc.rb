@@ -19,11 +19,9 @@ end
 
 if ENV["AUTODOC"]
   RSpec.configure do |config|
-    config.after(:each, type: :request) do
-      if example.metadata[:autodoc]
-        txn = Autodoc::Transaction.build(self)
-        Autodoc.collector.collect(example, txn)
-      end
+    config.after(:each, autodoc: true) do
+      txn = Autodoc::Transaction.build(self)
+      Autodoc.collector.collect(example, txn)
     end
 
     config.after(:suite) do
