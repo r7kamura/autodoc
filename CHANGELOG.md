@@ -1,3 +1,7 @@
+## 0.2.5
+* add ToC generator
+* use Autodoc.configuration.path to change documents path
+
 ## 0.2.4
 * add Documents class
 
