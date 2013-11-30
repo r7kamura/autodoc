@@ -15,7 +15,7 @@ module Autodoc
     def pathname
       @path ||= begin
         payload = @context.example.file_path.gsub(%r<\./spec/requests/(.+)_spec\.rb>, '\1.md')
-        Pathname.new(Autodoc.configuration.base_path) + payload
+        Pathname.new(Autodoc.configuration.path) + payload
       end
     end
 

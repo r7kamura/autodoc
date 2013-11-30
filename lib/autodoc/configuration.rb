@@ -14,7 +14,7 @@ module Autodoc
       end
     end
 
-    property :base_path do
+    property :path do
       "doc"
     end
 
