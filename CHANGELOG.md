@@ -1,3 +1,6 @@
+## 0.2.3
+* clean up dependencies & implementation
+
 ## 0.2.2
 * fix default documented headers
 
