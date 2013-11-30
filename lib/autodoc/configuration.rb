@@ -25,7 +25,7 @@ module Autodoc
     end
 
     property :template do
-      File.read(File.expand_path("../templates/section.md.erb", __FILE__))
+      File.read(File.expand_path("../templates/document.md.erb", __FILE__))
     end
 
     property :toc_template do
