@@ -1,5 +1,4 @@
 require "rspec"
-require "autodoc/collector"
 require "autodoc/configuration"
 require "autodoc/document"
 require "autodoc/transaction"
@@ -7,8 +6,8 @@ require "autodoc/version"
 
 module Autodoc
   class << self
-    def collector
-      @collector ||= Autodoc::Collector.new
+    def contexts
+      @contexts ||= []
     end
 
     def configuration
@@ -20,16 +19,20 @@ end
 if ENV["AUTODOC"]
   RSpec.configure do |config|
     config.after(:each, autodoc: true) do
-      txn = Autodoc::Transaction.build(self)
-      Autodoc.collector.collect(example, txn)
+      Autodoc.contexts << self.clone
     end
 
     config.after(:suite) do
-      Autodoc.collector.documents.each do |filepath, documents|
-        filepath = filepath.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
+      table = Hash.new {|table, key| table[key] = [] }
+      Autodoc.contexts.each do |context|
+        transaction = Autodoc::Transaction.build(context)
+        table[context.example.file_path] << Autodoc::Document.render(context.example, transaction)
+      end
+
+      table.each do |path, documents|
         pathname = Rails.root.join("doc")
         pathname += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
-        pathname += filepath
+        pathname += path.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
         pathname.parent.mkpath
         pathname.open("w") {|file| file << documents.join("\n").rstrip + "\n" }
       end
