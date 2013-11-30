@@ -15,9 +15,7 @@ module Autodoc
     end
 
     property :base_path do
-      path = Rails.root.join("doc")
-      path += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
-      path
+      "doc"
     end
 
     property :headers do

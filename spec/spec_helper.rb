@@ -4,6 +4,7 @@ require "rspec/rails"
 require "rspec/autorun"
 
 Autodoc.configuration.toc = true
+Autodoc.configuration.base_path = "spec/dummy/doc"
 
 RSpec.configure do |config|
   # If you"re not using ActiveRecord, or you"d prefer not to run each of your

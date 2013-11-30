@@ -1,3 +1,5 @@
+require "pathname"
+
 module Autodoc
   class Documents
     def initialize
@@ -32,7 +34,7 @@ module Autodoc
     end
 
     def toc_path
-      Autodoc.configuration.base_path + "toc.md"
+      Pathname.new(Autodoc.configuration.base_path) + "toc.md"
     end
   end
 end
