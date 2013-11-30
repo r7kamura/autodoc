@@ -1,0 +1,11 @@
+<%# coding: UTF-8 -%>
+## Table of Contents
+<% @table.each do |pathname, documents| -%>
+* [<%= pathname.basename %>](<%= pathname.basename %>)
+<% documents.group_by(&:title).each do |title, documents| -%>
+<% documents.each_with_index do |document, index| -%>
+<% suffix = index == 0 ? "" : "-#{index}" -%>
+ * [<%= title %>](<%= "#{pathname.basename}##{document.identifier}#{suffix}" %>)
+<% end -%>
+<% end -%>
+<% end -%>

@@ -3,6 +3,8 @@ require File.expand_path("../../spec/dummy/config/environment", __FILE__)
 require "rspec/rails"
 require "rspec/autorun"
 
+Autodoc.configuration.toc = true
+
 RSpec.configure do |config|
   # If you"re not using ActiveRecord, or you"d prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

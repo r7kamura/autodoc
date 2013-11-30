@@ -11,8 +11,23 @@ module Autodoc
       @context = context
     end
 
+    def pathname
+      @path ||= begin
+        payload = @context.example.file_path.gsub(%r<\./spec/requests/(.+)_spec\.rb>, '\1.md')
+        Autodoc.configuration.base_path + payload
+      end
+    end
+
     def render
       ERB.new(Autodoc.configuration.template, nil, "-").result(binding)
+    end
+
+    def title
+      "#{method} #{path}"
+    end
+
+    def identifier
+      title.gsub(" ", "-").gsub(/[:_\/]/, "").downcase
     end
 
     private

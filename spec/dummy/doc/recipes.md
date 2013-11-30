@@ -23,11 +23,10 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-30T13:59:21.061Z",
-  "updated_at": "2013-11-30T13:59:21.061Z"
+  "created_at": "2013-11-30T18:15:08.928Z",
+  "updated_at": "2013-11-30T18:15:08.928Z"
 }
 ```
-
 
 ## POST /recipes
 Creates a new recipe.
@@ -54,7 +53,7 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-30T13:59:21.072Z",
-  "updated_at": "2013-11-30T13:59:21.072Z"
+  "created_at": "2013-11-30T18:15:08.938Z",
+  "updated_at": "2013-11-30T18:15:08.938Z"
 }
 ```

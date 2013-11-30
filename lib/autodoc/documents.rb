@@ -5,16 +5,34 @@ module Autodoc
     end
 
     def append(context)
-      path = context.example.file_path.gsub(%r<\./spec/requests/(.+)_spec\.rb>, '\1.md')
-      key = Autodoc.configuration.base_path + path
-      @table[key] << Autodoc::Document.render(context)
+      document = Autodoc::Document.new(context.clone)
+      @table[document.pathname] << document
     end
 
     def write
+      write_toc if Autodoc.configuration.toc
+      write_documents
+    end
+
+    private
+
+    def write_documents
       @table.each do |pathname, documents|
         pathname.parent.mkpath
-        pathname.open("w") {|file| file << documents.join("\n").rstrip + "\n" }
+        pathname.open("w") {|file| file << documents.map(&:render).join("\n").rstrip + "\n" }
       end
+    end
+
+    def write_toc
+      toc_path.open("w") {|file| file << render_toc }
+    end
+
+    def render_toc
+      ERB.new(Autodoc.configuration.toc_template, nil, "-").result(binding)
+    end
+
+    def toc_path
+      Autodoc.configuration.base_path + "toc.md"
     end
   end
 end
