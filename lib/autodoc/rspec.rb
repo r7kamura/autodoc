@@ -7,9 +7,7 @@ end
 RSpec.configuration.after(:suite) do
   table = Autodoc.contexts.group_by {|context| context.example.file_path }
   table.each do |path, contexts|
-    pathname = Rails.root.join("doc")
-    pathname += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
-    pathname += path.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
+    pathname = Autodoc.configuration.base_path + path.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
     pathname.parent.mkpath
     pathname.open("w") do |file|
       file << contexts.map {|context| Autodoc::Document.render(context) }.join("\n").rstrip + "\n"

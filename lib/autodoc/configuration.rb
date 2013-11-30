@@ -7,15 +7,22 @@
 #
 module Autodoc
   class Configuration
-    attr_accessor :headers, :template
+    attr_writer :headers, :base_path, :template
 
-    def initialize
-      reset
+    def headers
+      @headers ||= %w[Location]
     end
 
-    def reset
-      @headers = %w[Location]
-      @template = <<-EOF.strip_heredoc
+    def base_path
+      @base_path ||= begin
+        path = Rails.root.join("doc")
+        path += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
+        path
+      end
+    end
+
+    def template
+      @template ||= <<-EOF.strip_heredoc
         <%# coding: UTF-8 -%>
         ## <%= method %> <%= path %>
         <%= description %>
