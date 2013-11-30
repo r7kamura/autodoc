@@ -1,10 +1,3 @@
-# You can configure documented headers.
-#
-# Examples
-#
-#   # response.headers["X-Content-Type-Options"] will be documented.
-#   Autodoc.configuration.headers << "X-Content-Type-Options"
-#
 module Autodoc
   class Configuration
     attr_writer :headers, :base_path, :template
