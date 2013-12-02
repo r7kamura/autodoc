@@ -1,3 +1,6 @@
+## 0.2.6
+* fix ToC generator
+
 ## 0.2.5
 * add ToC generator
 * use Autodoc.configuration.path to change documents path
