@@ -26,6 +26,7 @@ module Autodoc
     end
 
     def write_toc
+      toc_path.parent.mkpath
       toc_path.open("w") {|file| file << render_toc }
     end
 
