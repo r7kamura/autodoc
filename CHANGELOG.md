@@ -1,3 +1,6 @@
+## 0.2.7
+* sort list in ToC
+
 ## 0.2.6
 * fix ToC generator
 
