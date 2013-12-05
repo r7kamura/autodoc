@@ -1,6 +1,6 @@
 <%# coding: UTF-8 -%>
 ## Table of Contents
-<% @table.each do |pathname, documents| -%>
+<% @table.sort.each do |pathname, documents| -%>
 * [<%= pathname.basename %>](<%= pathname.basename %>)
 <% documents.group_by(&:title).each do |title, documents| -%>
 <% documents.each_with_index do |document, index| -%>
