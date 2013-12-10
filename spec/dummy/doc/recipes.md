@@ -14,8 +14,8 @@ response:
   "id": 1,
   "name": "test",
   "type": 2,
-  "created_at": "2013-11-30T19:04:12.608Z",
-  "updated_at": "2013-11-30T19:04:12.608Z"
+  "created_at": "2013-12-10T02:07:44.282Z",
+  "updated_at": "2013-12-10T02:07:44.282Z"
 }
 ```
 
@@ -44,7 +44,7 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-11-30T19:04:12.684Z",
-  "updated_at": "2013-11-30T19:04:12.684Z"
+  "created_at": "2013-12-10T02:07:44.355Z",
+  "updated_at": "2013-12-10T02:07:44.355Z"
 }
 ```
