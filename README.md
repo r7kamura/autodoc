@@ -1,5 +1,5 @@
 # Autodoc
-Auto-generate JSON API documents from your request-specs.
+Generate documentation from your rack application & request-spec.
 
 ## Installation
 ```ruby
@@ -7,7 +7,7 @@ gem "autodoc", group: :test
 ```
 
 ## Usage
-Run rspec with AUTODOC=1 to generate documents for the specs tagged with `:autodoc`.  
+Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.  
 example: [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md), [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md)
 
 ```sh
@@ -15,12 +15,30 @@ example: [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/d
 AUTODOC=1 rspec
 ```
 
+### Example for any Rack application with rack-test
+```ruby
+# spec/requests/entries_spec.rb
+describe "Entries" do
+  include Rack::Test::Methods
+
+  let(:app) do
+    MyRackApplication
+  end
+
+  describe "GET /entries", autodoc: true do
+    get "/entries"
+    last_response.status.should == 200
+  end
+end
+```
+
+### Example for Rails application with rspec-rails
 ```ruby
 # spec/requests/recipes_spec.rb
 describe "Recipes" do
   describe "POST /recipes", autodoc: true do
     it "creates a new recipe" do
-      post "/recipes.json", name: "alice", type: 1
+      post "/recipes", name: "alice", type: 1
       response.status.should == 201
     end
   end
