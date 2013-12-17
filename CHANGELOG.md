@@ -1,3 +1,6 @@
+## 0.3.0
+* change Autodoc::Document interface & template to mimic HTTP text
+
 ## 0.2.8
 * include query string into document template
 
