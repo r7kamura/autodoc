@@ -64,7 +64,9 @@ module Autodoc
       table = request_header_from_fixed_keys
       table.merge!(request_header_from_http_prefix)
       table.reject! {|key, value| value.blank? }
-      table.map {|key, value| [key.split(?_).map(&:downcase).map(&:camelize).join(?-), value].join(": ") }.sort.join("\n")
+      table = Hash[table.map {|key, value| [key.split(?_).map(&:downcase).map(&:camelize).join(?-), value] }]
+      table.except!(*Autodoc.configuration.suppressed_request_header)
+      table.map {|key, value| [key, value].join(": ") }.sort.join("\n")
     end
 
     def request_header_from_http_prefix
@@ -117,7 +119,9 @@ module Autodoc
     end
 
     def response_header
-      response.headers.map {|key, value| [key, value].join(": ") }.sort.join("\n")
+      table = response.headers.clone
+      table.except!(*Autodoc.configuration.suppressed_response_header)
+      table.map {|key, value| [key, value].join(": ") }.sort.join("\n")
     end
 
     def response_header_from_fixed_keys

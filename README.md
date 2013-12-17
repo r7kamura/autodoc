@@ -49,7 +49,8 @@ end
 You can configure `Autodoc.configuration` to change its behavior:
 
 * path - [String] location to put files (default: ./doc)
-* headers - [Array] keys of documented response header (default: ["Location"])
+* suppressed_request_header - [Strings] filtered request header keys
+* suppressed_response_header - [Strings] filtered response header keys
 * template - [String] ERB template for each document (default: [document.md.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/document.md.erb))
 * toc_template - [String] ERB template for ToC (default: [toc.md.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/toc.md.erb))
 * toc - [Boolean] whether to generate toc.md (default: false)

@@ -18,8 +18,12 @@ module Autodoc
       "doc"
     end
 
-    property :headers do
-      %w[Location]
+    property :suppressed_request_header do
+      []
+    end
+
+    property :suppressed_response_header do
+      []
     end
 
     property :template do

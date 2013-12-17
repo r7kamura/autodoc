@@ -14,11 +14,11 @@ HTTP/1.1 200
 Cache-Control: max-age=0, private, must-revalidate
 Content-Length: 111
 Content-Type: application/json; charset=utf-8
-ETag: "644268fba32fef5d0c220ee841e6f0d3"
+ETag: "082bd55a40d73aebcc3f6227e98dcebb"
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: 440000dc-0277-4b2e-abdc-5863752a6fc1
-X-Runtime: 0.042121
+X-Request-Id: 1ced421d-4c76-44cf-bf5b-241358f73311
+X-Runtime: 0.038226
 X-UA-Compatible: chrome=1
 X-XSS-Protection: 1; mode=block
 
@@ -26,8 +26,8 @@ X-XSS-Protection: 1; mode=block
   "id": 1,
   "name": "test",
   "type": 2,
-  "created_at": "2013-12-17T09:07:04.233Z",
-  "updated_at": "2013-12-17T09:07:04.233Z"
+  "created_at": "2013-12-17T09:17:20.775Z",
+  "updated_at": "2013-12-17T09:17:20.775Z"
 }
 ```
 
@@ -61,12 +61,12 @@ HTTP/1.1 201
 Cache-Control: max-age=0, private, must-revalidate
 Content-Length: 111
 Content-Type: application/json; charset=utf-8
-ETag: "7d124786b38ff20989617a703ab0c0d0"
+ETag: "1220735207c1ff5203a3c8975649d37a"
 Location: http://www.example.com/recipes/1
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: 5ed2b49f-f5c1-4db4-8b36-ddf40fd45cde
-X-Runtime: 0.007229
+X-Request-Id: b1fded86-bbc2-4442-9fa2-d9536bd55dd4
+X-Runtime: 0.006243
 X-UA-Compatible: chrome=1
 X-XSS-Protection: 1; mode=block
 
@@ -74,7 +74,7 @@ X-XSS-Protection: 1; mode=block
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-12-17T09:07:04.323Z",
-  "updated_at": "2013-12-17T09:07:04.323Z"
+  "created_at": "2013-12-17T09:17:20.858Z",
+  "updated_at": "2013-12-17T09:17:20.858Z"
 }
 ```
