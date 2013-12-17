@@ -1,4 +1,5 @@
 require "action_dispatch/http/request"
+require "uri"
 require "erb"
 require "pathname"
 
@@ -55,6 +56,10 @@ module Autodoc
 
     def method
       request.method
+    end
+
+    def request_query
+      "?#{URI.unescape(request.query_string)}" unless request.query_string.empty?
     end
 
     def request_body
