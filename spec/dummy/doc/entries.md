@@ -1,19 +1,15 @@
 ## GET /entries
 Returns entries.
 
-### request
+## Example
 ```
-GET /entries
+GET /entries HTTP/1.1
+Accept: application/json
+Content-Length: 0
+Host: example.org
 ```
 
-### response
-```ruby
-Status: 200
-response: 
-[
-  {
-    "title": "Test Title",
-    "body": "Lorem Ipsum"
-  }
-]
+```
+HTTP/1.1 200
+Content-Length: 45
 ```

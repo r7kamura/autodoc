@@ -2,13 +2,13 @@
 ## <%= title %>
 <%= description %>
 <%= parameters_section %>
-### request
+### Example
 ```
-<%= method %> <%= path %><%= request_query %>
+<%= method %> <%= path %><%= request_query %> <%= request_http_version %>
+<%= request_header %><%= request_body_section %>
 ```
-<%= request_body_section %>
-### response
-```ruby
-Status: <%= response_status %><%= response_headers %>
-response: <%= response_body %>
+
+```
+<%= response_http_version %> <%= response.status %>
+<%= response_header %><%= response_body_section %>
 ```

@@ -59,24 +59,70 @@ module Autodoc
       request.method
     end
 
+    def request_header
+      table = request_header_from_fixed_keys
+      table.merge!(request_header_from_http_prefix)
+      table.reject! {|key, value| value.blank? }
+      table.map {|key, value| [key.split(?_).map(&:downcase).map(&:camelize).join(?-), value].join(": ") }.sort.join("\n")
+    end
+
+    def request_header_from_http_prefix
+      request.headers.inject({}) do |table, (key, value)|
+        if key.start_with?("HTTP_")
+          table.merge(key.gsub(/^HTTP_/, "") => value)
+        else
+          table
+        end
+      end
+    end
+
+    def request_header_from_fixed_keys
+      request.headers.env.slice("CONTENT_TYPE", "CONTENT_LENGTH", "LOCATION")
+    end
+
+    def request_http_version
+      request.env["HTTP_VERSION"] || "HTTP/1.1"
+    end
+
     def request_query
       "?#{URI.unescape(request.query_string)}" unless request.query_string.empty?
+    end
+
+    def request_body_section
+      "\n\n#{request_body}" unless request_body.empty?
     end
 
     def request_body
       request.body.string
     end
 
-    def response_status
-      response.status
+    def response_http_version
+      response.env["HTTP_VERSION"] || "HTTP/1.1"
     end
 
-    def response_header(header)
-      response.headers[header]
+    def response_header
+      response.headers.map {|key, value| [key, value].join(": ") }.sort.join("\n")
     end
 
-    def response_body_raw
-      response.body
+    def response_header_from_fixed_keys
+      response.headers.env.slice("CONTENT_TYPE", "CONTENT_LENGTH", "LOCATION")
+    end
+
+    def response_http_version
+      response.header["HTTP_VERSION"] || "HTTP/1.1"
+    end
+
+    def response_body_section
+      "\n\n#{response_body}" if response_body.present?
+    end
+
+    def response_body
+      if response.header["Content-Type"].include?("application/json")
+        JSON.pretty_generate(JSON.parse(response.body))
+      else
+        response.body
+      end
+    rescue
     end
 
     def controller
@@ -107,29 +153,14 @@ module Autodoc
       @context.example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
     end
 
-    def response_body
-      "\n" + JSON.pretty_generate(JSON.parse(response_body_raw))
-    rescue JSON::ParserError
-    end
-
-    def request_body_section
-      if has_request_body?
-        "\n```\n#{request_body}\n```\n"
-      end
-    end
-
     def parameters_section
       if has_validators? && parameters.present?
-        "\n### parameters\n#{parameters}\n"
+        "\n### Parameters\n#{parameters}\n"
       end
     end
 
     def parameters
       validators.map {|validator| Parameter.new(validator) }.join("\n")
-    end
-
-    def has_request_body?
-      request_body.present?
     end
 
     def has_validators?
@@ -138,12 +169,6 @@ module Autodoc
 
     def validators
       WeakParameters.stats[controller][action].try(:validators)
-    end
-
-    def response_headers
-      Autodoc.configuration.headers.map do |header|
-        "\n#{header}: #{response_header(header)}" if response_header(header)
-      end.compact.join
     end
 
     class Parameter
