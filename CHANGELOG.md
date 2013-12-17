@@ -1,3 +1,7 @@
+## 0.3.1
+* prettify JSON request body
+* filter request & response header by Autodoc.configuration.suppress_{request,response}_header
+
 ## 0.3.0
 * change Autodoc::Document interface & template to mimic HTTP text
 
