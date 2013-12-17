@@ -1,3 +1,6 @@
+## 0.2.8
+* include query string into document template
+
 ## 0.2.7
 * sort list in ToC
 
