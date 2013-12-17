@@ -1,4 +1,5 @@
 require "action_dispatch/http/request"
+require "active_support/core_ext/hash/slice"
 require "active_support/core_ext/string/strip"
 require "uri"
 require "erb"
@@ -89,11 +90,26 @@ module Autodoc
     end
 
     def request_body_section
-      "\n\n#{request_body}" unless request_body.empty?
+      "\n\n#{request_body}" if request_body.present?
     end
 
     def request_body
-      request.body.string
+      if instance_variable_defined?(:@request_body)
+        @request_body
+      else
+        @request_body = begin
+          if request.headers["Content-Type"].try(:include?, "application/json")
+            request_body_parsed_as_json
+          else
+            request.body.string
+          end
+        end
+      end
+    end
+
+    def request_body_parsed_as_json
+      JSON.pretty_generate(JSON.parse(request.body.string))
+    rescue JSON::ParserError
     end
 
     def response_http_version
@@ -117,12 +133,22 @@ module Autodoc
     end
 
     def response_body
-      if response.header["Content-Type"].include?("application/json")
-        JSON.pretty_generate(JSON.parse(response.body))
+      if instance_variable_defined?(:@response_body)
+        @response_body
       else
-        response.body
+        @response_body = begin
+          if response.header["Content-Type"].try(:include?, "application/json")
+            response_body_parsed_as_json
+          else
+            response.body
+          end
+        end
       end
-    rescue
+    end
+
+    def response_body_parsed_as_json
+      JSON.pretty_generate(JSON.parse(response.body))
+    rescue JSON::ParserError
     end
 
     def controller

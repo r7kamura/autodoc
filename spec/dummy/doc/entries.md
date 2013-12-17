@@ -1,7 +1,7 @@
 ## GET /entries
 Returns entries.
 
-## Example
+### Example
 ```
 GET /entries HTTP/1.1
 Accept: application/json
@@ -12,4 +12,12 @@ Host: example.org
 ```
 HTTP/1.1 200
 Content-Length: 45
+Content-Type: application/json
+
+[
+  {
+    "title": "Test Title",
+    "body": "Lorem Ipsum"
+  }
+]
 ```

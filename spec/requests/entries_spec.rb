@@ -15,7 +15,7 @@ describe "Entries" do
     lambda do |env|
       [
         200,
-        {},
+        { "Content-Type" => "application/json" },
         [
           [
             {

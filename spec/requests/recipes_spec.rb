@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "Recipes" do
   let(:env) do
-    { "HTTP_ACCEPT" => "application/json" }
+    { "ACCEPT" => "application/json", "CONTENT_TYPE" => "application/json" }
   end
 
   let(:params) do
@@ -15,6 +15,10 @@ describe "Recipes" do
     end
 
     context "with valid condition (using Rack::Test)", :autodoc do
+      before do
+        env["Content-Type"] = "application/json"
+      end
+
       include Rack::Test::Methods
 
       it "returns the recipe" do
@@ -36,7 +40,7 @@ describe "Recipes" do
       end
 
       it "returns 400" do
-        post "/recipes", params, env
+        post "/recipes", params.to_json, env
         response.status.should == 400
       end
     end
@@ -47,7 +51,7 @@ describe "Recipes" do
       end
 
       it "returns 400" do
-        post "/recipes", params, env
+        post "/recipes", params.to_json, env
         response.status.should == 400
       end
     end
@@ -58,7 +62,7 @@ describe "Recipes" do
       end
 
       it "creates a new recipe" do
-        post "/recipes", params, env
+        post "/recipes", params.to_json, env
         response.status.should == 201
       end
     end
@@ -74,7 +78,7 @@ describe "Recipes" do
       end
 
       it "creates a new recipe" do
-        post "/recipes", params, env
+        post "/recipes", params.to_json, env
         response.status.should == 201
       end
     end

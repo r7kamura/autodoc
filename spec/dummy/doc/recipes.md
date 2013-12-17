@@ -1,11 +1,11 @@
 ## GET /recipes/:id
 Returns the recipe.
 
-## Example
+### Example
 ```
 GET /recipes/:id HTTP/1.1
-Accept: application/json
 Content-Length: 0
+Content-Type: application/json
 Host: example.org
 ```
 
@@ -14,11 +14,11 @@ HTTP/1.1 200
 Cache-Control: max-age=0, private, must-revalidate
 Content-Length: 111
 Content-Type: application/json; charset=utf-8
-ETag: "349ed81d084907a8583a84c1643c4f26"
+ETag: "644268fba32fef5d0c220ee841e6f0d3"
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: 52ca31ee-4b32-4bdd-ae9e-fed8badaa9b7
-X-Runtime: 0.023516
+X-Request-Id: 440000dc-0277-4b2e-abdc-5863752a6fc1
+X-Runtime: 0.042121
 X-UA-Compatible: chrome=1
 X-XSS-Protection: 1; mode=block
 
@@ -26,8 +26,8 @@ X-XSS-Protection: 1; mode=block
   "id": 1,
   "name": "test",
   "type": 2,
-  "created_at": "2013-12-17T08:32:27.415Z",
-  "updated_at": "2013-12-17T08:32:27.415Z"
+  "created_at": "2013-12-17T09:07:04.233Z",
+  "updated_at": "2013-12-17T09:07:04.233Z"
 }
 ```
 
@@ -42,15 +42,18 @@ recipe!
 * `name` string (required, except: `["alice", "bob"]`)
 * `type` integer (only: `1..3`)
 
-## Example
+### Example
 ```
 POST /recipes HTTP/1.1
 Accept: application/json
-Content-Length: 16
-Content-Type: application/x-www-form-urlencoded
+Content-Length: 24
+Content-Type: application/json
 Host: www.example.com
 
-name=name&type=1
+{
+  "name": "name",
+  "type": 1
+}
 ```
 
 ```
@@ -58,12 +61,12 @@ HTTP/1.1 201
 Cache-Control: max-age=0, private, must-revalidate
 Content-Length: 111
 Content-Type: application/json; charset=utf-8
-ETag: "fca9b8e000ef821607eda6104ceec86b"
+ETag: "7d124786b38ff20989617a703ab0c0d0"
 Location: http://www.example.com/recipes/1
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: 27e3eef6-2d84-479c-999e-a1142f7ecc74
-X-Runtime: 0.005600
+X-Request-Id: 5ed2b49f-f5c1-4db4-8b36-ddf40fd45cde
+X-Runtime: 0.007229
 X-UA-Compatible: chrome=1
 X-XSS-Protection: 1; mode=block
 
@@ -71,7 +74,7 @@ X-XSS-Protection: 1; mode=block
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-12-17T08:32:27.475Z",
-  "updated_at": "2013-12-17T08:32:27.475Z"
+  "created_at": "2013-12-17T09:07:04.323Z",
+  "updated_at": "2013-12-17T09:07:04.323Z"
 }
 ```

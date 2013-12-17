@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    respond_with Recipe.find(params[:id])
+    render json: Recipe.find(params[:id])
   end
 
   def create
