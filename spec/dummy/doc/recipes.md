@@ -14,13 +14,17 @@ response:
   "id": 1,
   "name": "test",
   "type": 2,
-  "created_at": "2013-12-10T02:07:44.282Z",
-  "updated_at": "2013-12-10T02:07:44.282Z"
+  "created_at": "2013-12-17T07:14:41.175Z",
+  "updated_at": "2013-12-17T07:14:41.175Z"
 }
 ```
 
 ## POST /recipes
-Creates a new recipe.
+Creates
+a
+new
+recipe!
+
 
 ### parameters
 * `name` string (required, except: `["alice", "bob"]`)
@@ -44,7 +48,7 @@ response:
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-12-10T02:07:44.355Z",
-  "updated_at": "2013-12-10T02:07:44.355Z"
+  "created_at": "2013-12-17T07:14:41.231Z",
+  "updated_at": "2013-12-17T07:14:41.231Z"
 }
 ```

@@ -1,4 +1,5 @@
 require "action_dispatch/http/request"
+require "active_support/core_ext/string/strip"
 require "uri"
 require "erb"
 require "pathname"
@@ -95,7 +96,11 @@ module Autodoc
     end
 
     def description
-      "#{@context.example.description.capitalize}."
+      if @context.respond_to?(:description)
+        @context.description.strip_heredoc
+      else
+        "#{@context.example.description.capitalize}."
+      end
     end
 
     def path

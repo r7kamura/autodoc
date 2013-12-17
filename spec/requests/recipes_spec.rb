@@ -64,6 +64,15 @@ describe "Recipes" do
     end
 
     context "with valid condition", :autodoc do
+      let(:description) do
+        <<-EOS
+          Creates
+          a
+          new
+          recipe!
+        EOS
+      end
+
       it "creates a new recipe" do
         post "/recipes", params, env
         response.status.should == 201
