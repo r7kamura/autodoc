@@ -80,7 +80,9 @@ module Autodoc
     end
 
     def request_header_from_fixed_keys
-      request.headers.env.slice("CONTENT_TYPE", "CONTENT_LENGTH", "LOCATION")
+      table = request.headers
+      table = table.env if table.respond_to?(:env)
+      table.slice("CONTENT_TYPE", "CONTENT_LENGTH", "LOCATION")
     end
 
     def request_http_version
@@ -122,10 +124,6 @@ module Autodoc
       table = response.headers.clone
       table.except!(*Autodoc.configuration.suppressed_response_header)
       table.map {|key, value| [key, value].join(": ") }.sort.join("\n")
-    end
-
-    def response_header_from_fixed_keys
-      response.headers.env.slice("CONTENT_TYPE", "CONTENT_LENGTH", "LOCATION")
     end
 
     def response_http_version
