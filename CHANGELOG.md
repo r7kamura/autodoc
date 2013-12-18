@@ -1,3 +1,6 @@
+## 0.3.2
+* Fix template & document bug
+
 ## 0.3.1
 * prettify JSON request body
 * filter request & response header by Autodoc.configuration.suppress_{request,response}_header
