@@ -3,7 +3,7 @@ Returns the recipe.
 
 ### Example
 ```
-GET /recipes/:id HTTP/1.1
+GET /recipes/1 HTTP/1.1
 Content-Length: 0
 Content-Type: application/json
 Host: example.org
@@ -14,11 +14,11 @@ HTTP/1.1 200
 Cache-Control: max-age=0, private, must-revalidate
 Content-Length: 111
 Content-Type: application/json; charset=utf-8
-ETag: "082bd55a40d73aebcc3f6227e98dcebb"
+ETag: "817f9446a34cdb5179ee09b555b507f8"
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: 1ced421d-4c76-44cf-bf5b-241358f73311
-X-Runtime: 0.038226
+X-Request-Id: a1723cc5-c4f7-4779-8382-5dbf879687e5
+X-Runtime: 0.017503
 X-UA-Compatible: chrome=1
 X-XSS-Protection: 1; mode=block
 
@@ -26,8 +26,8 @@ X-XSS-Protection: 1; mode=block
   "id": 1,
   "name": "test",
   "type": 2,
-  "created_at": "2013-12-17T09:17:20.775Z",
-  "updated_at": "2013-12-17T09:17:20.775Z"
+  "created_at": "2013-12-18T06:33:23.129Z",
+  "updated_at": "2013-12-18T06:33:23.129Z"
 }
 ```
 
@@ -61,12 +61,12 @@ HTTP/1.1 201
 Cache-Control: max-age=0, private, must-revalidate
 Content-Length: 111
 Content-Type: application/json; charset=utf-8
-ETag: "1220735207c1ff5203a3c8975649d37a"
+ETag: "9a32ff7207d60c4e3eca833ed83320f9"
 Location: http://www.example.com/recipes/1
 X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
-X-Request-Id: b1fded86-bbc2-4442-9fa2-d9536bd55dd4
-X-Runtime: 0.006243
+X-Request-Id: 06f2dfe3-3085-419a-b2a8-db3abd1d3156
+X-Runtime: 0.006099
 X-UA-Compatible: chrome=1
 X-XSS-Protection: 1; mode=block
 
@@ -74,7 +74,7 @@ X-XSS-Protection: 1; mode=block
   "id": 1,
   "name": "name",
   "type": 1,
-  "created_at": "2013-12-17T09:17:20.858Z",
-  "updated_at": "2013-12-17T09:17:20.858Z"
+  "created_at": "2013-12-18T06:33:23.195Z",
+  "updated_at": "2013-12-18T06:33:23.195Z"
 }
 ```
