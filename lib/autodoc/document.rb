@@ -11,13 +11,14 @@ module Autodoc
       new(*args).render
     end
 
-    def initialize(context)
+    def initialize(context, example)
       @context = context
+      @example = example
     end
 
     def pathname
       @path ||= begin
-        payload = @context.example.file_path.gsub(%r<\./spec/requests/(.+)_spec\.rb>, '\1.md')
+        payload = @example.file_path.gsub(%r<\./spec/requests/(.+)_spec\.rb>, '\1.md')
         Pathname.new(Autodoc.configuration.path) + payload
       end
     end
@@ -173,12 +174,12 @@ module Autodoc
       if @context.respond_to?(:description)
         @context.description.strip_heredoc
       else
-        "#{@context.example.description.capitalize}."
+        "#{@example.description.capitalize}."
       end
     end
 
     def path
-      @context.example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
+      @example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
     end
 
     def parameters_section
