@@ -10,7 +10,7 @@ describe Autodoc::Documents do
       @documents.append(double(:context))
     end
 
-    describe "GET /recipes in ./recipes.md" do
+    describe "renders 'GET /recipes' in ./recipes.md" do
       let(:title) { "GET /recipes" }
       let(:pathname) { "./recipes.md" }
 
@@ -19,7 +19,7 @@ describe Autodoc::Documents do
       it { should include("[GET /recipes](recipes.md#get-recipes)") }
     end
 
-    describe "GET /admin/recipes in ./admin/recipes.md" do
+    describe "renders 'GET /admin/recipes' in ./admin/recipes.md" do
       let(:title) { "GET /admin/recipes" }
       let(:pathname) { "./admin/recipes.md" }
 
