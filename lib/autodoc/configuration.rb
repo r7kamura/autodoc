@@ -37,5 +37,9 @@ module Autodoc
     property :toc do
       false
     end
+
+    def pathname
+      Pathname.new(path)
+    end
   end
 end

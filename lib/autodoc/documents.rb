@@ -35,7 +35,7 @@ module Autodoc
     end
 
     def toc_path
-      Pathname.new(Autodoc.configuration.path) + "toc.md"
+      Autodoc.configuration.pathname + "toc.md"
     end
   end
 end
