@@ -1,4 +1,4 @@
-require 'autodoc/documents'
+require "spec_helper"
 
 describe Autodoc::Documents do
   describe "render_toc" do
