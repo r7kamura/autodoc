@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Autodoc::Documents do
-  describe "render_toc" do
+  describe "#render_toc" do
     before do
       Autodoc::Document.any_instance.stub(:pathname){ Autodoc.configuration.pathname + pathname }
       Autodoc::Document.any_instance.stub(:title){ title }
