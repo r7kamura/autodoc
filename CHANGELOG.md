@@ -1,3 +1,6 @@
+## 0.3.3
+* Fix ToC template for specs in sub-directory
+
 ## 0.3.2
 * Fix template & document bug
 
