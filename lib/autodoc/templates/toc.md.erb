@@ -1,11 +1,12 @@
 <%# coding: UTF-8 -%>
 ## Table of Contents
 <% @table.sort.each do |pathname, documents| -%>
-* [<%= pathname.basename %>](<%= pathname.basename %>)
+<% relative_path = pathname.relative_path_from(Pathname.new(Autodoc.configuration.path)) -%>
+* [<%= relative_path %>](<%= relative_path %>)
 <% documents.group_by(&:title).each do |title, documents| -%>
 <% documents.each_with_index do |document, index| -%>
 <% suffix = index == 0 ? "" : "-#{index}" -%>
- * [<%= title %>](<%= "#{pathname.basename}##{document.identifier}#{suffix}" %>)
+ * [<%= title %>](<%= "#{relative_path}##{document.identifier}#{suffix}" %>)
 <% end -%>
 <% end -%>
 <% end -%>
