@@ -68,6 +68,10 @@ module Autodoc
       end.compact.join
     end
 
+    def etag?
+      !!response_header("ETag")
+    end
+
     class Parameter
       attr_reader :validator
 

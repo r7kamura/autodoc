@@ -32,6 +32,7 @@ module Autodoc
         ### response
         ```ruby
         Status: <%= response_status %><%= response_headers %>
+        Etag support: <%= etag? ? "Yes" : "No" %>
         response:
         <%= response_body %>
         ```
