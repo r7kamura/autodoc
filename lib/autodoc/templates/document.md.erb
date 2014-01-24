@@ -3,10 +3,15 @@
 <%= description %>
 <%= parameters_section %>
 ### Example
+
+#### Request
+
 ```
 <%= method %> <%= request.path %><%= request_query %> <%= request_http_version %>
 <%= request_header %><%= request_body_section %>
 ```
+
+#### Response
 
 ```
 <%= response_http_version %> <%= response.status %>
