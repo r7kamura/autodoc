@@ -1,3 +1,6 @@
+## 0.3.4
+* Some improvements on the document template file
+
 ## 0.3.3
 * Fix ToC template for specs in sub-directory
 
