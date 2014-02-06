@@ -8,7 +8,7 @@ gem "autodoc", group: :test
 
 ## Usage
 Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.  
-example: [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md), [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md)
+example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md) and [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md) from [spec/requests/recipes_spec.rb](https://github.com/r7kamura/autodoc/blob/master/spec/requests/recipes_spec.rb).
 
 ```sh
 # shell-command
@@ -25,7 +25,7 @@ describe "Entries" do
     MyRackApplication
   end
 
-  describe "GET /entries", autodoc: true do
+  describe "GET /entries", :autodoc do
     get "/entries"
     last_response.status.should == 200
   end
@@ -36,7 +36,12 @@ end
 ```ruby
 # spec/requests/recipes_spec.rb
 describe "Recipes" do
-  describe "POST /recipes", autodoc: true do
+  describe "POST /recipes", :autodoc do
+    # You can write more detailed description with `let(:description)`
+    let(:description) do
+      "Creates a new recipe!"
+    end
+
     it "creates a new recipe" do
       post "/recipes", name: "alice", type: 1
       response.status.should == 201
