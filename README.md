@@ -26,8 +26,10 @@ describe "Entries" do
   end
 
   describe "GET /entries", autodoc: true do
-    get "/entries"
-    last_response.status.should == 200
+    it "returns entries" do
+      get "/entries"
+      last_response.status.should == 200
+    end
   end
 end
 ```
