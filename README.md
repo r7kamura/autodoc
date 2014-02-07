@@ -15,7 +15,8 @@ example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/
 AUTODOC=1 rspec
 ```
 
-### Example for any Rack application with rack-test
+### Examples
+#### For any Rack application with rack-test
 ```ruby
 # spec/requests/entries_spec.rb
 describe "Entries" do
@@ -25,26 +26,39 @@ describe "Entries" do
     MyRackApplication
   end
 
-  describe "GET /entries", :autodoc do
+  describe "GET /entries", autodoc: true do
     get "/entries"
     last_response.status.should == 200
   end
 end
 ```
 
-### Example for Rails application with rspec-rails
+#### For Rails application with rspec-rails
 ```ruby
 # spec/requests/recipes_spec.rb
 describe "Recipes" do
-  describe "POST /recipes", :autodoc do
-    # You can write more detailed description with `let(:description)`
-    let(:description) do
-      "Creates a new recipe!"
-    end
-
+  describe "POST /recipes", autodoc: true do
     it "creates a new recipe" do
       post "/recipes", name: "alice", type: 1
       response.status.should == 201
+    end
+  end
+end
+```
+
+### Custom description
+You can write more detailed descriptions with `let(:description)`.
+
+```ruby
+describe "Recipes" do
+  describe "PUT /recipes/:id", autodoc: true do
+    let(:description) do
+      "Updates a recipe. `name` parameter is required."
+    end
+
+    it "updates a recipe" do
+      put "/recipes/#{recipe.id}", name: "Bob"
+      response.status.should == 204
     end
   end
 end
