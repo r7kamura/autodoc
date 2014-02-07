@@ -8,14 +8,15 @@ gem "autodoc", group: :test
 
 ## Usage
 Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.  
-example: [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md), [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md)
+example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md) and [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md) from [spec/requests/recipes_spec.rb](https://github.com/r7kamura/autodoc/blob/master/spec/requests/recipes_spec.rb).
 
 ```sh
 # shell-command
 AUTODOC=1 rspec
 ```
 
-### Example for any Rack application with rack-test
+### Examples
+#### For any Rack application with rack-test
 ```ruby
 # spec/requests/entries_spec.rb
 describe "Entries" do
@@ -34,7 +35,7 @@ describe "Entries" do
 end
 ```
 
-### Example for Rails application with rspec-rails
+#### For Rails application with rspec-rails
 ```ruby
 # spec/requests/recipes_spec.rb
 describe "Recipes" do
@@ -42,6 +43,24 @@ describe "Recipes" do
     it "creates a new recipe" do
       post "/recipes", name: "alice", type: 1
       response.status.should == 201
+    end
+  end
+end
+```
+
+### Custom description
+You can write more detailed descriptions with `let(:description)`.
+
+```ruby
+describe "Recipes" do
+  describe "PUT /recipes/:id", autodoc: true do
+    let(:description) do
+      "Updates a recipe. `name` parameter is required."
+    end
+
+    it "updates a recipe" do
+      put "/recipes/#{recipe.id}", name: "Bob"
+      response.status.should == 204
     end
   end
 end
