@@ -21,7 +21,10 @@ module Autodoc
     def write_documents
       @table.each do |pathname, documents|
         pathname.parent.mkpath
-        pathname.open("w") {|file| file << documents.map(&:render).join("\n").rstrip + "\n" }
+        pathname.open("w") do |file|
+          file << ERB.new(Autodoc.configuration.header_template, nil, "-").result(binding) + "\n" if Autodoc.configuration.header
+          file << documents.map(&:render).join("\n").rstrip + "\n"
+        end
       end
     end
 

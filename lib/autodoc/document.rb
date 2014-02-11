@@ -34,6 +34,22 @@ module Autodoc
       title.gsub(" ", "-").gsub(/[:\/]/, "").downcase
     end
 
+    def method
+      request.method
+    end
+
+    def resource
+      path
+    end
+
+    def description
+      if @context.respond_to?(:description)
+        @context.description.strip_heredoc
+      else
+        "#{@context.example.description.capitalize}."
+      end
+    end
+
     private
 
     def request
@@ -56,9 +72,9 @@ module Autodoc
       end
     end
 
-    def method
-      request.method
-    end
+    # def method
+    #   request.method
+    # end
 
     def request_header
       table = request_header_from_fixed_keys
@@ -169,13 +185,13 @@ module Autodoc
       @transaction ||= Autodoc::Transaction.build(@context)
     end
 
-    def description
-      if @context.respond_to?(:description)
-        @context.description.strip_heredoc
-      else
-        "#{@context.example.description.capitalize}."
-      end
-    end
+    # def description
+    #   if @context.respond_to?(:description)
+    #     @context.description.strip_heredoc
+    #   else
+    #     "#{@context.example.description.capitalize}."
+    #   end
+    # end
 
     def path
       @context.example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
