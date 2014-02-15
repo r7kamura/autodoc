@@ -178,7 +178,7 @@ module Autodoc
     end
 
     def path
-      @context.example.full_description[%r<(GET|POST|PUT|DELETE) ([^ ]+)>, 2]
+      @context.example.full_description[%r<(GET|POST|PATCH|PUT|DELETE) ([^ ]+)>, 2]
     end
 
     def parameters_section
