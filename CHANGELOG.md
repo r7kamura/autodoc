@@ -1,3 +1,6 @@
+## 0.3.5
+* Support PATCH method
+
 ## 0.3.4
 * Some improvements on the document template file
 
