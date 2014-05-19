@@ -1,3 +1,6 @@
+## 0.3.6
+* Show dummy message if Content-Type might be BINARY
+
 ## 0.3.5
 * Support PATCH method
 
