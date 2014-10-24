@@ -3,7 +3,7 @@ require "spec_helper"
 describe Autodoc::Documents do
   describe "#render_toc" do
     before do
-      documents.append(context)
+      documents.append(context, example)
     end
 
     let(:documents) do

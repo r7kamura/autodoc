@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Recipes" do
+describe "Recipes", type: :request do
   let(:env) do
     { "ACCEPT" => "application/json", "CONTENT_TYPE" => "application/json" }
   end
@@ -9,17 +9,22 @@ describe "Recipes" do
     {}
   end
 
+
   describe "GET /recipes/:id" do
     let(:recipe) do
       Recipe.create(name: "test", type: 2)
     end
 
-    context "with valid condition (using Rack::Test)", :autodoc do
+    context "with valid condition (using Rack::Test)", autodoc: true do
       before do
         env["Content-Type"] = "application/json"
       end
 
       include Rack::Test::Methods
+
+      let(:app) do
+        Dummy::Application
+      end
 
       it "returns the recipe" do
         get "/recipes/#{recipe.id}", params, env
@@ -67,7 +72,7 @@ describe "Recipes" do
       end
     end
 
-    context "with valid condition", :autodoc do
+    context "with valid condition", autodoc: true do
       let(:description) do
         <<-EOS
           Creates

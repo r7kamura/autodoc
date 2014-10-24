@@ -6,8 +6,8 @@ module Autodoc
       @table = Hash.new {|table, key| table[key] = [] }
     end
 
-    def append(context)
-      document = Autodoc::Document.new(context.clone)
+    def append(context, example)
+      document = Autodoc::Document.new(context.clone, example.clone)
       @table[document.pathname] << document
     end
 
