@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Recipes" do
+describe "Recipes", type: :request do
   let(:env) do
     { "ACCEPT" => "application/json", "CONTENT_TYPE" => "application/json" }
   end
@@ -8,6 +8,7 @@ describe "Recipes" do
   let(:params) do
     {}
   end
+
 
   describe "GET /recipes/:id" do
     let(:recipe) do
@@ -20,6 +21,10 @@ describe "Recipes" do
       end
 
       include Rack::Test::Methods
+
+      let(:app) do
+        Dummy::Application
+      end
 
       it "returns the recipe" do
         get "/recipes/#{recipe.id}", params, env
