@@ -23,7 +23,7 @@ describe "Recipes", type: :request do
 
       it "returns the recipe" do
         get "/recipes/#{recipe.id}", params, env
-        last_response.status.should == 200
+        expect(last_response.status).to eq(200)
       end
     end
   end
@@ -41,7 +41,7 @@ describe "Recipes", type: :request do
 
       it "returns 400" do
         post "/recipes", params.to_json, env
-        response.status.should == 400
+        expect(response.status).to eq(400)
       end
     end
 
@@ -52,7 +52,7 @@ describe "Recipes", type: :request do
 
       it "returns 400" do
         post "/recipes", params.to_json, env
-        response.status.should == 400
+        expect(response.status).to eq(400)
       end
     end
 
@@ -63,7 +63,7 @@ describe "Recipes", type: :request do
 
       it "creates a new recipe" do
         post "/recipes", params.to_json, env
-        response.status.should == 201
+        expect(response.status).to eq(201)
       end
     end
 
@@ -79,7 +79,7 @@ describe "Recipes", type: :request do
 
       it "creates a new recipe" do
         post "/recipes", params.to_json, env
-        response.status.should == 201
+        expect(response.status).to eq(201)
       end
     end
   end

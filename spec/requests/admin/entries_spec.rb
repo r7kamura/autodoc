@@ -32,7 +32,7 @@ describe "Admin::Entries", type: :request do
     context "with Rack::Test", :autodoc do
       it "returns entries" do
         get "/admin/entries", params, env
-        last_response.status.should == 200
+        expect(last_response.status).to eq(200)
       end
     end
   end

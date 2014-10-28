@@ -20,7 +20,7 @@ describe Autodoc::Documents do
       else
         mock = double(example: example, request: request)
       end
-      mock.stub(clone: mock)
+      allow(mock).to receive_messages(clone: mock)
       mock
     end
 
@@ -51,8 +51,8 @@ describe Autodoc::Documents do
 
       it "includes links to recipes.md" do
         toc = documents.send(:render_toc)
-        toc.should include("[recipes.md](recipes.md)")
-        toc.should include("[GET /recipes](recipes.md#get-recipes)")
+        expect(toc).to include("[recipes.md](recipes.md)")
+        expect(toc).to include("[GET /recipes](recipes.md#get-recipes)")
       end
     end
 
@@ -67,8 +67,8 @@ describe Autodoc::Documents do
 
       it "includes links to admin/recipes.md" do
         toc = documents.send(:render_toc)
-        toc.should include("[admin/recipes.md](admin/recipes.md)")
-        toc.should include("[GET /admin/recipes](admin/recipes.md#get-adminrecipes)")
+        expect(toc).to include("[admin/recipes.md](admin/recipes.md)")
+        expect(toc).to include("[GET /admin/recipes](admin/recipes.md#get-adminrecipes)")
       end
     end
   end
