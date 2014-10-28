@@ -3,7 +3,11 @@ require "spec_helper"
 describe Autodoc::Documents do
   describe "#render_toc" do
     before do
-      documents.append(context)
+      if ::RSpec::Core::Version::STRING.split('.').first == "3"
+        documents.append(context, example)
+      else
+        documents.append(context, double)
+      end
     end
 
     let(:documents) do
@@ -11,7 +15,11 @@ describe Autodoc::Documents do
     end
 
     let(:context) do
-      mock = double(example: example, request: request)
+      if ::RSpec::Core::Version::STRING.split('.').first == "3"
+        mock = double(example: example, request: request, file_path: file_path, full_description: full_description)
+      else
+        mock = double(example: example, request: request)
+      end
       mock.stub(clone: mock)
       mock
     end
