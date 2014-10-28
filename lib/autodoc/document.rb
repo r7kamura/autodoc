@@ -41,7 +41,7 @@ module Autodoc
       if ::RSpec::Core::Version::STRING.split('.').first == "3"
         @example
       else
-        @context
+        @context.example
       end
     end
 
