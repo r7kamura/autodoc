@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Recipes" do
+describe "Recipes", type: :request do
   let(:env) do
     { "ACCEPT" => "application/json", "CONTENT_TYPE" => "application/json" }
   end

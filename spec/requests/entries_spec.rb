@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Entries" do
+describe "Entries", type: :request do
   include Rack::Test::Methods
 
   let(:env) do

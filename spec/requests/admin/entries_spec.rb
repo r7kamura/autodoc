@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Admin::Entries" do
+describe "Admin::Entries", type: :request do
   include Rack::Test::Methods
 
   let(:env) do
