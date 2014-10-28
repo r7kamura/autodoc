@@ -14,7 +14,7 @@ describe "Recipes", type: :request do
       Recipe.create(name: "test", type: 2)
     end
 
-    context "with valid condition (using Rack::Test)", :autodoc do
+    context "with valid condition (using Rack::Test)", autodoc: true do
       before do
         env["Content-Type"] = "application/json"
       end
@@ -67,7 +67,7 @@ describe "Recipes", type: :request do
       end
     end
 
-    context "with valid condition", :autodoc do
+    context "with valid condition", autodoc: true do
       let(:description) do
         <<-EOS
           Creates

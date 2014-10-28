@@ -20,7 +20,12 @@ describe Autodoc::Documents do
       else
         mock = double(example: example, request: request)
       end
-      allow(mock).to receive_messages(clone: mock)
+
+      if ::RSpec::Core::Version::STRING.split('.').first == "3"
+        allow(mock).to receive_messages(clone: mock)
+      else
+        mock.stub(clone: mock)
+      end
       mock
     end
 
