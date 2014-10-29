@@ -1,3 +1,6 @@
+## 0.4.0
+* Support RSpec 3
+
 ## 0.3.6
 * Show dummy message if Content-Type might be BINARY
 
