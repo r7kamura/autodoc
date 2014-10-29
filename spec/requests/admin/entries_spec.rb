@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Admin::Entries" do
+describe "Admin::Entries", type: :request do
   include Rack::Test::Methods
 
   let(:env) do
@@ -29,10 +29,10 @@ describe "Admin::Entries" do
   end
 
   describe "GET /admin/entries" do
-    context "with Rack::Test", :autodoc do
+    context "with Rack::Test", autodoc: true do
       it "returns entries" do
         get "/admin/entries", params, env
-        last_response.status.should == 200
+        expect(last_response.status).to eq(200)
       end
     end
   end

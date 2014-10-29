@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Recipes" do
+describe "Recipes", type: :request do
   let(:env) do
     { "ACCEPT" => "application/json", "CONTENT_TYPE" => "application/json" }
   end
@@ -14,7 +14,7 @@ describe "Recipes" do
       Recipe.create(name: "test", type: 2)
     end
 
-    context "with valid condition (using Rack::Test)", :autodoc do
+    context "with valid condition (using Rack::Test)", autodoc: true do
       before do
         env["Content-Type"] = "application/json"
       end
@@ -23,7 +23,7 @@ describe "Recipes" do
 
       it "returns the recipe" do
         get "/recipes/#{recipe.id}", params, env
-        last_response.status.should == 200
+        expect(last_response.status).to eq(200)
       end
     end
   end
@@ -41,7 +41,7 @@ describe "Recipes" do
 
       it "returns 400" do
         post "/recipes", params.to_json, env
-        response.status.should == 400
+        expect(response.status).to eq(400)
       end
     end
 
@@ -52,7 +52,7 @@ describe "Recipes" do
 
       it "returns 400" do
         post "/recipes", params.to_json, env
-        response.status.should == 400
+        expect(response.status).to eq(400)
       end
     end
 
@@ -63,11 +63,11 @@ describe "Recipes" do
 
       it "creates a new recipe" do
         post "/recipes", params.to_json, env
-        response.status.should == 201
+        expect(response.status).to eq(201)
       end
     end
 
-    context "with valid condition", :autodoc do
+    context "with valid condition", autodoc: true do
       let(:description) do
         <<-EOS
           Creates
@@ -79,7 +79,7 @@ describe "Recipes" do
 
       it "creates a new recipe" do
         post "/recipes", params.to_json, env
-        response.status.should == 201
+        expect(response.status).to eq(201)
       end
     end
   end

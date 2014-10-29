@@ -1,7 +1,7 @@
 require "rspec"
 
-RSpec.configuration.after(:each, autodoc: true) do
-  Autodoc.documents.append(self)
+RSpec.configuration.after(:each, autodoc: true) do |example|
+  Autodoc.documents.append(self, example)
 end
 
 RSpec.configuration.after(:suite) do
