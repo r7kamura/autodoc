@@ -30,7 +30,14 @@ describe Autodoc::Documents do
     end
 
     let(:example) do
-      double(file_path: file_path, full_description: full_description)
+      mock = double(file_path: file_path, full_description: full_description)
+
+      if ::RSpec::Core::Version::STRING.split('.').first == "3"
+        allow(mock).to receive_messages(clone: mock)
+      else
+        mock.stub(clone: mock)
+      end
+      mock
     end
 
     let(:file_path) do
