@@ -38,7 +38,7 @@ module Autodoc
     private
 
     def example
-      if ::RSpec::Core::Version::STRING.split('.').first == "3"
+      if ::RSpec::Core::Version::STRING.match /\A(?:3\.|2.99\.)/
         @example
       else
         @context.example
