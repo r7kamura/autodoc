@@ -1,3 +1,6 @@
+## 0.4.1
+- Support RSpec 2.99 (Thx @dex1t)
+
 ## 0.4.0
 - Support RSpec 3
 
