@@ -34,6 +34,14 @@ module Autodoc
       File.read(File.expand_path("../templates/toc.md.erb", __FILE__))
     end
 
+    property :toc_html do
+      false
+    end
+
+    property :toc_html_template do
+      File.read(File.expand_path("../templates/toc.html.erb", __FILE__))
+    end
+
     property :toc do
       false
     end

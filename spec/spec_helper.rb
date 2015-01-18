@@ -3,6 +3,7 @@ require File.expand_path("../../spec/dummy/config/environment", __FILE__)
 require "rspec/rails"
 
 Autodoc.configuration.toc = true
+Autodoc.configuration.toc_html = true
 Autodoc.configuration.path = "spec/dummy/doc"
 
 RSpec.configure do |config|

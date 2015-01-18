@@ -75,10 +75,14 @@ You can configure `Autodoc.configuration` to change its behavior:
 * template - [String] ERB template for each document (default: [document.md.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/document.md.erb))
 * toc_template - [String] ERB template for ToC (default: [toc.md.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/toc.md.erb))
 * toc - [Boolean] whether to generate toc.md (default: false)
+* toc_html_template - [String] ERB template for html ToC (default: [toc.html.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/toc.html.erb))
+* toc_html - [Boolean] whether to generate toc.html - a single page documentation with a toc (default: false)
 
 ```ruby
 # example
 Autodoc.configuration.path = "doc/api"
 Autodoc.configuration.toc = true
+Autodoc.configuration.toc_html = true
 Autodoc.configuration.template = File.read(File.expand_path("../autodoc/templates/document.md.erb", __FILE__))
+
 ```

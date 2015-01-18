@@ -1,0 +1,82 @@
+<%# coding: UTF-8 -%>
+<head>
+  <style>
+    .api-docs {
+      left: 210px;
+    }
+
+    .api-docs, .api-docs-toc {
+      width: 66%;
+     }
+
+     .api-action {
+       padding: 10px;
+     }
+
+    .tocify-wrapper {
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: fixed;
+      width: 210px;
+      float: left;
+      font-size: 16px;
+      background-color: #AAAADD;
+      top: 1px;
+      bottom: -1px;
+      padding: 10px;
+    }
+
+    .generated-at {
+      position: fixed;
+      bottom: 10px;
+    }
+
+    .api-resource {
+      border-bottom: black 1px solid;
+    }
+
+    pre {
+      padding: 10px;
+      background-color: #CCCCEE;
+    }
+
+    .page-wrapper {
+      margin-left: 240px;
+      min-width: 700px;
+      position: relative;
+      z-index: 10;
+    }
+  </style>
+</head>
+<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {fenced_code_blocks: true}) %>
+<% document_markdown = '' %>
+<html>
+<div class='tocify-wrapper'>
+<h1> Table of Contents </h1>
+<% @table.sort.each do |pathname, documents| -%>
+  <% title = pathname.cleanpath.to_s.sub(/^.*doc\//,'') -%>
+  <% link = pathname.to_s.html_safe -%>
+  <li>
+    <a href="#<%= link -%>"><%= title -%></a>
+  </li>
+  <%
+    document_markdown += '<div id="' + pathname.to_s.html_safe + '" class="api-resource">'
+    documents.each do |document|
+      document_markdown += '<div class="api-action">'
+      document_markdown += markdown.render(document.render)
+      document_markdown += '</div>'
+    end
+    document_markdown += '</div>'
+  %>
+<% end -%>
+<div class='generated-at'>
+Generated at:
+<br>
+<%= Time.now.to_s -%>
+</div>
+</div>
+
+<div class='page-wrapper'>
+  <%= document_markdown -%>
+</div>
+</html>
