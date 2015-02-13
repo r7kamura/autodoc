@@ -1,3 +1,6 @@
+## 0.4.2
+- Add HTML Documentation support (Thx @daviddening)
+
 ## 0.4.1
 - Support RSpec 2.99 (Thx @dex1t)
 
