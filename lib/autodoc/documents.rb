@@ -13,6 +13,8 @@ module Autodoc
 
     def write
       write_toc if Autodoc.configuration.toc
+      write_toc_html if Autodoc.configuration.toc_html
+
       write_documents
     end
 
@@ -34,8 +36,21 @@ module Autodoc
       ERB.new(Autodoc.configuration.toc_template, nil, "-").result(binding)
     end
 
+     def write_toc_html
+      toc_html_path.parent.mkpath
+      toc_html_path.open("w") {|file| file << render_toc_html }
+    end
+
+    def render_toc_html
+      ERB.new(Autodoc.configuration.toc_html_template, nil, "-").result(binding)
+    end
+
     def toc_path
       Autodoc.configuration.pathname + "toc.md"
+    end
+
+    def toc_html_path
+      Autodoc.configuration.pathname + "toc.html"
     end
   end
 end

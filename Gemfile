@@ -14,4 +14,5 @@ group :test do
   gem "weak_parameters"
   gem "protected_attributes"
   gem "rack-test"
+  gem "redcarpet"
 end
