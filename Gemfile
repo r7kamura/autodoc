@@ -15,4 +15,5 @@ group :test do
   gem "protected_attributes"
   gem "rack-test"
   gem "redcarpet"
+  gem "responders"
 end

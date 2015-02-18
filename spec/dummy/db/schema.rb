@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20130607075126) do
 
-  create_table "recipes", force: true do |t|
+  create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.integer  "type"
     t.datetime "created_at"
