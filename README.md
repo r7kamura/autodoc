@@ -6,6 +6,12 @@ Generate documentation from your rack application & request-spec.
 gem "autodoc", group: :test
 ```
 
+If you want to generate toc_html, you should install [redcarpet gem](https://github.com/vmg/redcarpet) (optional).
+
+```ruby
+gem "redcarpet", group: :test
+```
+
 ## Usage
 Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.  
 example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md) and [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md) from [spec/requests/recipes_spec.rb](https://github.com/r7kamura/autodoc/blob/master/spec/requests/recipes_spec.rb).
