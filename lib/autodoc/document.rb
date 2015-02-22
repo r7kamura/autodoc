@@ -219,13 +219,27 @@ module Autodoc
       end
 
       def to_s
-        "#{body}#{payload}"
+        string = ""
+        string << "#{body}#{payload}"
+
+        if validator.respond_to? :validators
+          validator.validators.each do |x|
+            string << "\n"
+            string << Parameter.new(x).to_s.indent(2)
+          end
+        end
+
+        string
       end
 
       private
 
       def body
-        "* `#{validator.key}` #{validator.type}"
+        if validator.key.nil?
+          "* #{validator.type}"
+        else
+          "* `#{validator.key}` #{validator.type}"
+        end
       end
 
       def payload
