@@ -1,3 +1,6 @@
+## 0.4.3
+- Support nested parameters on weak_parameters (Thx @mzp)
+
 ## 0.4.2
 - Add HTML Documentation support (Thx @daviddening)
 
