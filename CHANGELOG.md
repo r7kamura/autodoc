@@ -1,3 +1,6 @@
+## 0.4.4
+- Support image response (Thx @mzp)
+
 ## 0.4.3
 - Support nested parameters on weak_parameters (Thx @mzp)
 
