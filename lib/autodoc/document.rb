@@ -151,7 +151,10 @@ module Autodoc
         @response_body
       else
         @response_body = begin
-          if response.header["Content-Type"].try(:include?, "application/json")
+          case
+          when response.header["Content-Type"].try(:include?, "image/")
+            response.header["Content-Type"]
+          when response.header["Content-Type"].try(:include?, "application/json")
             response_body_parsed_as_json
           else
             response.body
