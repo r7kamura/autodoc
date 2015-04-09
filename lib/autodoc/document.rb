@@ -18,7 +18,7 @@ module Autodoc
 
     def pathname
       @path ||= begin
-        payload = example.file_path.gsub(%r<\./spec/requests/(.+)_spec\.rb>, '\1.md')
+        payload = example.file_path.gsub(%r<\./spec/[^/]+/(.+)_spec\.rb>, '\1.md')
         Autodoc.configuration.pathname + payload
       end
     end
