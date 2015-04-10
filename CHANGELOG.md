@@ -1,3 +1,6 @@
+## 0.4.5
+- Support other specs directory than spec/requests (Thx @joe-re)
+
 ## 0.4.4
 - Support image response (Thx @mzp)
 
