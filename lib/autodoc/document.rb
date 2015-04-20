@@ -188,12 +188,20 @@ module Autodoc
       if @context.respond_to?(:description)
         @context.description.strip_heredoc
       else
-        "#{example.description.capitalize}."
+        # Full Description:
+        #   Users POST /api/users/sign_in with context1 when nested context
+        #   should hello
+        # And we want to take the contexts into account.
+        desc_with_context = example
+          .full_description
+          .match(/(#{supported_methods.join("|")}) (\S+) (.*)/)
+          .to_a[3]
+        "#{desc_with_context.capitalize}"
       end
     end
 
     def path
-      example.full_description[%r<(GET|POST|PATCH|PUT|DELETE) ([^ ]+)>, 2]
+      example.full_description[%r<(#{supported_methods.join('|')}) ([^ ]+)>, 2]
     end
 
     def parameters_section
@@ -268,5 +276,10 @@ module Autodoc
         "except: `#{validator.options[:except].inspect}`" if validator.options[:except]
       end
     end
+
+    private
+      def supported_methods
+        ["GET", "POST", "PATCH", "PUT", "DELETE"]
+      end
   end
 end
