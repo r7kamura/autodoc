@@ -92,3 +92,15 @@ Autodoc.configuration.toc_html = true
 Autodoc.configuration.template = File.read(File.expand_path("../autodoc/templates/document.md.erb", __FILE__))
 
 ```
+
+## WeakParameters integration
+If your app uses [WeakParameters](https://github.com/r7kamura/weak_parameters) to define parameters schema
+in your controller, autodoc scans them and provides `### Parameters` section to generated docs.
+
+```rb
+class RecipesController < ApplicationController
+  validates :create do
+    string :name, required: true, except: ["charlie", "dave"]
+    integer :type, only: 1..3
+  end
+```
