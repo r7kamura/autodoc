@@ -188,7 +188,11 @@ module Autodoc
       if @context.respond_to?(:description)
         @context.description.strip_heredoc
       else
-        "#{example.description.capitalize}."
+        # Full Description:
+        #   Users POST /api/users/sign_in with context1 when nested context
+        #   should hello
+        # And we want to take the contexts into account.
+        "#{example.full_description.split(' ')[3..-1].join(' ').capitalize}"
       end
     end
 
