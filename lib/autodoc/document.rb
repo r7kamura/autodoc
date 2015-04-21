@@ -19,6 +19,9 @@ module Autodoc
     def pathname
       @path ||= begin
         payload = example.file_path.gsub(%r<\./spec/[^/]+/(.+)_spec\.rb>, '\1.md')
+      unless Autodoc.configuration.skip.empty?
+        payload = payload.sub("#{Autodoc.configuration.skip}/", "")
+      end
         Autodoc.configuration.pathname + payload
       end
     end

@@ -82,6 +82,20 @@ describe Autodoc::Documents do
         expect(toc).to include("[admin/recipes.md](admin/recipes.md)")
         expect(toc).to include("[GET /admin/recipes](admin/recipes.md#get-adminrecipes)")
       end
+
+      context "with skip configuration" do
+      around do |example|
+        Autodoc.configuration.skip = "admin"
+        example.run
+        Autodoc.configuration.skip = ""
+      end
+
+      it "includes links to recipes.md" do
+        toc = documents.send(:render_toc)
+        expect(toc).to include("[recipes.md](recipes.md)")
+        expect(toc).to include("[GET /admin/recipes](recipes.md#get-adminrecipes)")
+        end
+      end
     end
   end
 end
