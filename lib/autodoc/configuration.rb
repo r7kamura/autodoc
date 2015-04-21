@@ -46,6 +46,10 @@ module Autodoc
       false
     end
 
+    property :skip do
+      ""
+    end
+
     def pathname
       Pathname.new(path)
     end
