@@ -1,3 +1,6 @@
+## 0.5.0
+- Add `Autodoc.configuration.document_path_from_example` (Thx @samuraiT)
+
 ## 0.4.5
 - Support other specs directory than spec/requests (Thx @joe-re)
 
