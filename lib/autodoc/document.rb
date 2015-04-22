@@ -7,6 +7,10 @@ require "pathname"
 
 module Autodoc
   class Document
+    DEFAULT_DOCUMENT_PATH_FROM_EXAMPLE = -> (example) do
+      example.file_path.gsub(%r<\./spec/[^/]+/(.+)_spec\.rb>, '\1.md')
+    end
+
     def self.render(*args)
       new(*args).render
     end
@@ -17,12 +21,8 @@ module Autodoc
     end
 
     def pathname
-      @path ||= begin
-        payload = example.file_path.gsub(%r<\./spec/[^/]+/(.+)_spec\.rb>, '\1.md')
-        unless Autodoc.configuration.ignore_dir.empty?
-          payload = payload.sub("#{Autodoc.configuration.ignore_dir}/", "")
-        end
-        Autodoc.configuration.pathname + payload
+      @pathname ||= begin
+        Autodoc.configuration.pathname + document_path_from_example.call(example)
       end
     end
 
@@ -39,6 +39,10 @@ module Autodoc
     end
 
     private
+
+    def document_path_from_example
+      Autodoc.configuration.document_path_from_example || DEFAULT_DOCUMENT_PATH_FROM_EXAMPLE
+    end
 
     def example
       if ::RSpec::Core::Version::STRING.match /\A(?:3\.|2.99\.)/

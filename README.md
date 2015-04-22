@@ -83,14 +83,16 @@ You can configure `Autodoc.configuration` to change its behavior:
 * toc - [Boolean] whether to generate toc.md (default: false)
 * toc_html_template - [String] ERB template for html ToC (default: [toc.html.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/toc.html.erb))
 * toc_html - [Boolean] whether to generate toc.html - a single page documentation with a toc (default: false)
+* document_path_from_example - [Proc] specify a Proc to change the naming rule of document file paths
 
 ```ruby
-# example
 Autodoc.configuration.path = "doc/api"
 Autodoc.configuration.toc = true
 Autodoc.configuration.toc_html = true
 Autodoc.configuration.template = File.read(File.expand_path("../autodoc/templates/document.md.erb", __FILE__))
-
+Audocot.configuration.document_path_from_example = -> (example) do
+  example.file_path.gsub(%r<\./spec/requests/api/(.+)_spec\.rb>, '\1.md')
+end
 ```
 
 ## WeakParameters integration

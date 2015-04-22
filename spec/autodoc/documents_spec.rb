@@ -83,17 +83,18 @@ describe Autodoc::Documents do
         expect(toc).to include("[GET /admin/recipes](admin/recipes.md#get-adminrecipes)")
       end
 
-      context "with ignore_dir configuration" do
-      around do |example|
-        Autodoc.configuration.ignore_dir = "admin"
-        example.run
-        Autodoc.configuration.ignore_dir = ""
-      end
+      context "with document_path_from_example configuration" do
+        around do |example|
+          origin = Autodoc.configuration.document_path_from_example
+          Autodoc.configuration.document_path_from_example = -> (example) { "test.md" }
+          example.run
+          Autodoc.configuration.document_path_from_example = origin
+        end
 
-      it "includes links to recipes.md" do
-        toc = documents.send(:render_toc)
-        expect(toc).to include("[recipes.md](recipes.md)")
-        expect(toc).to include("[GET /admin/recipes](recipes.md#get-adminrecipes)")
+        it "change the naming rule of document file paths" do
+          toc = documents.send(:render_toc)
+          expect(toc).to include("[test.md](test.md)")
+          expect(toc).to include("[GET /admin/recipes](test.md#get-adminrecipes)")
         end
       end
     end

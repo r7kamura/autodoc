@@ -14,6 +14,9 @@ module Autodoc
       end
     end
 
+    property :document_path_from_example do
+    end
+
     property :path do
       "doc"
     end
@@ -44,10 +47,6 @@ module Autodoc
 
     property :toc do
       false
-    end
-
-    property :ignore_dir do
-      ""
     end
 
     def pathname
