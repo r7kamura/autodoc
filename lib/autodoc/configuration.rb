@@ -46,7 +46,7 @@ module Autodoc
       false
     end
 
-    property :skip do
+    property :ignore_dir do
       ""
     end
 
