@@ -83,11 +83,11 @@ describe Autodoc::Documents do
         expect(toc).to include("[GET /admin/recipes](admin/recipes.md#get-adminrecipes)")
       end
 
-      context "with skip configuration" do
+      context "with ignore_dir configuration" do
       around do |example|
-        Autodoc.configuration.skip = "admin"
+        Autodoc.configuration.ignore_dir = "admin"
         example.run
-        Autodoc.configuration.skip = ""
+        Autodoc.configuration.ignore_dir = ""
       end
 
       it "includes links to recipes.md" do
