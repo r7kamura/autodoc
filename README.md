@@ -90,7 +90,7 @@ Autodoc.configuration.path = "doc/api"
 Autodoc.configuration.toc = true
 Autodoc.configuration.toc_html = true
 Autodoc.configuration.template = File.read(File.expand_path("../autodoc/templates/document.md.erb", __FILE__))
-Audocot.configuration.document_path_from_example = -> (example) do
+Autodoc.configuration.document_path_from_example = -> (example) do
   example.file_path.gsub(%r<\./spec/requests/api/(.+)_spec\.rb>, '\1.md')
 end
 ```
