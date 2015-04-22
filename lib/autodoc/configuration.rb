@@ -46,6 +46,10 @@ module Autodoc
       false
     end
 
+    property :ignore_dir do
+      ""
+    end
+
     def pathname
       Pathname.new(path)
     end
