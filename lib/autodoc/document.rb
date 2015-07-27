@@ -7,7 +7,7 @@ require "pathname"
 
 module Autodoc
   class Document
-    DEFAULT_DOCUMENT_PATH_FROM_EXAMPLE = -> (example) do
+    DEFAULT_DOCUMENT_PATH_FROM_EXAMPLE = ->(example) do
       example.file_path.gsub(%r<\./spec/[^/]+/(.+)_spec\.rb>, '\1.md')
     end
 
