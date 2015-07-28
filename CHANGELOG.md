@@ -1,3 +1,6 @@
+## 0.5.1
+- Fix lambda syntax (Thx @highwide)
+
 ## 0.5.0
 - Add `Autodoc.configuration.document_path_from_example` (Thx @samuraiT)
 
