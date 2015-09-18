@@ -1,3 +1,6 @@
+## 0.5.2
+- Fix version detector (Thx @kachick)
+
 ## 0.5.1
 - Fix lambda syntax (Thx @highwide)
 
