@@ -1,3 +1,6 @@
+## 0.5.3
+- Fix bugs on pending examples (Thx @taiki45)
+
 ## 0.5.2
 - Fix version detector (Thx @kachick)
 
