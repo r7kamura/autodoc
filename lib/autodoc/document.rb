@@ -195,7 +195,7 @@ module Autodoc
       if @context.respond_to?(:description)
         @context.description.strip_heredoc
       else
-        "#{example.description.capitalize}."
+        example.description.sub(/\A./, &:upcase).concat('.')
       end
     end
 
