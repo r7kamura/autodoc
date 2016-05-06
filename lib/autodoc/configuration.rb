@@ -1,3 +1,4 @@
+require 'shellwords'
 module Autodoc
   class Configuration
     class << self
@@ -50,7 +51,7 @@ module Autodoc
     end
 
     def pathname
-      Pathname.new(path)
+      Pathname.new(Shellwords.shellescape(path))
     end
   end
 end
