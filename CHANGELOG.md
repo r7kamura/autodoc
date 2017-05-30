@@ -1,3 +1,7 @@
+## Unreleased
+
+- Fix Ruby-level warnings (Thx @amatsuda)
+
 ## 0.6.0
 
 - Change the message capitalization rule (Thx @k0kubun)
