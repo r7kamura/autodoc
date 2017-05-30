@@ -45,7 +45,7 @@ module Autodoc
     end
 
     def example
-      if ::RSpec::Core::Version::STRING.match /\A(?:3\.|2.99\.)/
+      if ::RSpec::Core::Version::STRING.match(/\A(?:3\.|2.99\.)/)
         @example
       else
         @context.example
@@ -133,10 +133,6 @@ module Autodoc
     def request_body_parsed_as_json
       JSON.pretty_generate(JSON.parse(request.body.string))
     rescue JSON::ParserError
-    end
-
-    def response_http_version
-      response.env["HTTP_VERSION"] || "HTTP/1.1"
     end
 
     def response_header
