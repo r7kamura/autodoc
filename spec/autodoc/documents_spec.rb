@@ -3,7 +3,7 @@ require "spec_helper"
 describe Autodoc::Documents do
   describe "#render_toc" do
     before do
-      if ::RSpec::Core::Version::STRING.match /\A(?:3|2\.99)\./
+      if ::RSpec::Core::Version::STRING.match(/\A(?:3|2\.99)\./)
         documents.append(context, example)
       else
         documents.append(context, double)
@@ -15,7 +15,7 @@ describe Autodoc::Documents do
     end
 
     let(:context) do
-      if ::RSpec::Core::Version::STRING.match /\A(?:3|2\.99)\./
+      if ::RSpec::Core::Version::STRING.match(/\A(?:3|2\.99)\./)
         mock = double(example: example, request: request, file_path: file_path, full_description: full_description)
       else
         mock = double(example: example, request: request)

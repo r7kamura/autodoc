@@ -45,7 +45,7 @@ module Autodoc
     end
 
     def example
-      if ::RSpec::Core::Version::STRING.match /\A(?:3\.|2.99\.)/
+      if ::RSpec::Core::Version::STRING.match(/\A(?:3\.|2.99\.)/)
         @example
       else
         @context.example
