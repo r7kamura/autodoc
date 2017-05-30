@@ -86,7 +86,7 @@ describe Autodoc::Documents do
       context "with document_path_from_example configuration" do
         around do |example|
           origin = Autodoc.configuration.document_path_from_example
-          Autodoc.configuration.document_path_from_example = -> (example) { "test.md" }
+          Autodoc.configuration.document_path_from_example = -> (_example) { "test.md" }
           example.run
           Autodoc.configuration.document_path_from_example = origin
         end
