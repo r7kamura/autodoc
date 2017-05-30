@@ -135,10 +135,6 @@ module Autodoc
     rescue JSON::ParserError
     end
 
-    def response_http_version
-      response.env["HTTP_VERSION"] || "HTTP/1.1"
-    end
-
     def response_header
       table = response.headers.clone
       table.except!(*Autodoc.configuration.suppressed_response_header)
