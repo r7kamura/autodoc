@@ -106,7 +106,7 @@ module Autodoc
     end
 
     def request_query
-      "?#{URI.unescape(request.query_string)}" unless request.query_string.empty?
+      "?#{URI.unescape(request.query_string.force_encoding(Encoding::UTF_8))}" unless request.query_string.empty?
     end
 
     def request_body_section
