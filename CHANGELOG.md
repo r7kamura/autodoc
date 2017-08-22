@@ -1,3 +1,7 @@
+## 0.6.2
+
+- Support multibyte query parameters (Thx @hiroki-uchida)
+
 ## 0.6.1
 
 - Fix Ruby-level warnings (Thx @amatsuda)
