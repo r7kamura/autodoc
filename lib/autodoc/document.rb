@@ -137,6 +137,7 @@ module Autodoc
 
     def response_header
       table = response.headers.clone
+      table = table.to_hash if table.respond_to?(:to_hash)
       table.except!(*Autodoc.configuration.suppressed_response_header)
       table.map {|key, value| [key, value].join(": ") }.sort.join("\n")
     end
