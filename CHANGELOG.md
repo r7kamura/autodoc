@@ -1,3 +1,8 @@
+## 0.7.0
+
+- Shell-escape given path
+- Use `#to_hash` to response headers if it can respond it
+
 ## 0.6.2
 
 - Support multibyte query parameters (Thx @hiroki-uchida)
