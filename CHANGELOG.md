@@ -7,159 +7,240 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.7.0
 
-- Shell-escape given path
-- Use `#to_hash` to response headers if it can respond it
+### Changed
+
+- Shell-escape given path.
+- Use `#to_hash` to response headers if it can respond it.
 
 ## 0.6.2
 
-- Support multibyte query parameters (Thx @hiroki-uchida)
+### Fixed
+
+- Support multibyte query parameters.
 
 ## 0.6.1
 
-- Fix Ruby-level warnings (Thx @amatsuda)
+### Fixed
+
+- Fix Ruby-level warnings.
 
 ## 0.6.0
 
-- Change the message capitalization rule (Thx @k0kubun)
+### Changed
+
+- Change the message capitalization rule.
 
 ## 0.5.3
 
-- Fix bugs on pending examples (Thx @taiki45)
+### Fixed
+
+- Fix bugs on pending examples.
 
 ## 0.5.2
 
-- Fix version detector (Thx @kachick)
+### Fixed
+
+- Fix version detector.
 
 ## 0.5.1
 
-- Fix lambda syntax (Thx @highwide)
+### Fixed
+
+- Fix lambda syntax.
 
 ## 0.5.0
 
-- Add `Autodoc.configuration.document_path_from_example` (Thx @samuraiT)
+### Added
+
+- Add `Autodoc.configuration.document_path_from_example`.
 
 ## 0.4.5
 
-- Support other specs directory than spec/requests (Thx @joe-re)
+### Added
+
+- Support other specs directory than spec/requests.
 
 ## 0.4.4
 
-- Support image response (Thx @mzp)
+### Added
+
+- Support image response.
 
 ## 0.4.3
 
-- Support nested parameters on weak_parameters (Thx @mzp)
+### Added
+
+- Support nested parameters on weak_parameters.
 
 ## 0.4.2
 
-- Add HTML Documentation support (Thx @daviddening)
+### Added
+
+- Add HTML Documentation support.
 
 ## 0.4.1
 
-- Support RSpec 2.99 (Thx @dex1t)
+### Added
+
+- Support RSpec 2.99.
 
 ## 0.4.0
 
-- Support RSpec 3
+### Added
+
+- Support RSpec 3.
 
 ## 0.3.6
 
-- Show dummy message if Content-Type might be BINARY
+### Added
+
+- Show dummy message if Content-Type might be BINARY.
 
 ## 0.3.5
 
-- Support PATCH method
+### Added
+
+- Support PATCH method.
 
 ## 0.3.4
 
-- Some improvements on the document template file
+### Added
+
+- Some improvements on the document template file.
 
 ## 0.3.3
 
-- Fix ToC template for specs in sub-directory
+### Fixed
+
+- Fix ToC template for specs in sub-directory.
 
 ## 0.3.2
 
-- Fix template & document bug
+### Fixed
+
+- Fix template & document bug.
 
 ## 0.3.1
 
-- prettify JSON request body
-- filter request & response header by Autodoc.configuration.suppress_{request,response}_header
+### Added
+
+- Filter request & response header by Autodoc.configuration.suppress_{request,response}_header.
+
+### Changed
+
+- Prettify JSON request body.
 
 ## 0.3.0
 
-- change Autodoc::Document interface & template to mimic HTTP text
+### Changed
+
+- Change Autodoc::Document interface & template to mimic HTTP text.
 
 ## 0.2.8
 
-- include query string into document template
+### Changed
+
+- Include query string into document template.
 
 ## 0.2.7
 
-- sort list in ToC
+### Changed
+
+- Sort list in ToC.
 
 ## 0.2.6
 
-- fix ToC generator
+### Fixed
+
+- Fix ToC generator.
 
 ## 0.2.5
 
-- add ToC generator
-- use Autodoc.configuration.path to change documents path
+### Added
+
+- Add ToC generator.
+- Use Autodoc.configuration.path to change documents path.
 
 ## 0.2.4
 
-- add Documents class
+### Added
+
+- Add Documents class.
 
 ## 0.2.3
 
-- clean up dependencies & implementation
+### Changed
+
+- Clean up dependencies & implementation.
 
 ## 0.2.2
 
-- fix default documented headers
+### Fixed
+
+- Fix default documented headers.
 
 ## 0.2.1
 
-- fix load dependency on rspec
+### Fixed
+
+- Fix load dependency on rspec.
 
 ## 0.2.0
 
-- remove dependency on awesome_print
+### Changed
+
+- Remove dependency on awesome_print.
 
 ## 0.1.9
 
-- fix encoding error at ruby 1.9 or earlier versions
+### Fixed
+
+- Fix encoding error at ruby 1.9 or earlier versions.
 
 ## 0.1.8
 
-- support rack-test
+### Added
+
+- Support rack-test.
 
 ## 0.1.7
 
-- change response format from Ruby hash table to JSON object
+### Changed
+
+- Change response format from Ruby hash table to JSON object.
 
 ## 0.1.6
 
-- support WeakParameter's :description option
+### Added
+
+- Support WeakParameter's :description option.
 
 ## 0.1.1
 
-- custom template
+### Added
+
+- Custom template.
 
 ## 0.1.0
 
-- AUTODOC environment variable
+### Added
+
+- AUTODOC environment variable.
 
 ## 0.0.8
 
-- show request body
+### Changed
+
+- Show request body.
 
 ## 0.0.3
 
-- configurable response header
+### Added
+
+- Configurable response header.
 
 ## 0.0.1
 
-- 1st release on 2013-06-07
+### Added
+
+- 1st release on 2013-06-07.
