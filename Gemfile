@@ -12,7 +12,6 @@ group :test do
     gem "rspec-rails"
   end
   gem "weak_parameters"
-  gem "protected_attributes"
   gem "rack-test"
   gem "redcarpet"
   gem "responders"
