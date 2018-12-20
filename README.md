@@ -1,6 +1,7 @@
 # Autodoc
 
 [![CircleCI](https://circleci.com/gh/r7kamura/autodoc.svg?style=svg)](https://circleci.com/gh/r7kamura/autodoc)
+[![Gem Version](https://badge.fury.io/rb/autodoc.svg)](https://rubygems.org/gems/autodoc)
 
 Generate documentation from your rack application & request-spec.
 
