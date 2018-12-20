@@ -1,4 +1,7 @@
 # Autodoc
+
+[![CircleCI](https://circleci.com/gh/r7kamura/autodoc.svg?style=svg)](https://circleci.com/gh/r7kamura/autodoc)
+
 Generate documentation from your rack application & request-spec.
 
 ## Installation
