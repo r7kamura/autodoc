@@ -1,0 +1,29 @@
+jobs:
+  rspec:
+    docker:
+      - image: ruby:2.5.3
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run:
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+          name: bundle install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run:
+          command: cd spec/dummy && RAILS_ENV=test bundle exec rails db:setup
+          name: rails db:setup
+      - run:
+          command: bundle exec rspec
+          name: rspec
+version: 2
+workflows:
+  version: 2
+  test:
+    jobs:
+      - rspec

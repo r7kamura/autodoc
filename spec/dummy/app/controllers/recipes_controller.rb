@@ -9,6 +9,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    respond_with Recipe.create(params.slice(:name, :type))
+    respond_with Recipe.create(params.permit(:name, :type))
   end
 end
