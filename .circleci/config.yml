@@ -16,7 +16,7 @@ jobs:
           paths:
             - ./vendor/bundle
       - run:
-          command: cd spec/dummy && bundle exec rails db:setup
+          command: cd spec/dummy && RAILS_ENV=test bundle exec rails db:setup
           name: rails db:setup
       - run:
           command: bundle exec rspec
