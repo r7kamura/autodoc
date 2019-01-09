@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-## 0.7.1 - 2018-12-18
+## 0.7.2 - 2019-01-09
 
 ### Fixed
 
 - Fixed broken symlink on spec/dummy/spec.
+
+## 0.7.1 - 2018-12-18
 
 ## 0.7.0 - 2018-08-30
 
