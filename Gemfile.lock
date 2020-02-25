@@ -74,7 +74,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     nio4r (2.3.1)
-    nokogiri (1.10.5)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
