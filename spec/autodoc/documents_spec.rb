@@ -45,7 +45,7 @@ describe Autodoc::Documents do
     end
 
     let(:request) do
-      double(method: method)
+      double(request_method: method)
     end
 
     let(:method) do
