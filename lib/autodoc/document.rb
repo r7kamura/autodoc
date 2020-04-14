@@ -73,7 +73,7 @@ module Autodoc
     end
 
     def method
-      request.method
+      request.request_method
     end
 
     def request_header
