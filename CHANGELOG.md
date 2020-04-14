@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.7.4 - 2020-04-14
+
+- Improve error message on no request case.
+
 ## 0.7.3 - 2019-06-18
 
 ### Fixed
