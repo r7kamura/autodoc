@@ -88,7 +88,7 @@ module Autodoc
     def request_header_from_http_prefix
       request.headers.inject({}) do |table, (key, value)|
         if key.to_s.start_with?("HTTP_")
-          table.merge(key.gsub(/^HTTP_/, "") => value)
+          table.merge(key.to_s.gsub(/^HTTP_/, "") => value)
         else
           table
         end
