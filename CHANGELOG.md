@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Convert header key to string.
+
 ## 0.7.4 - 2020-04-14
 
 ### Fixed
