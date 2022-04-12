@@ -1,6 +1,5 @@
 # Autodoc
 
-[![CircleCI](https://circleci.com/gh/r7kamura/autodoc.svg?style=svg)](https://circleci.com/gh/r7kamura/autodoc)
 [![Gem Version](https://badge.fury.io/rb/autodoc.svg)](https://rubygems.org/gems/autodoc)
 
 Generate documentation from your rack application & request-spec.
@@ -17,7 +16,7 @@ gem "redcarpet", group: :test
 ```
 
 ## Usage
-Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.  
+Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.
 example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md) and [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md) from [spec/requests/recipes_spec.rb](https://github.com/r7kamura/autodoc/blob/master/spec/requests/recipes_spec.rb).
 
 ```sh
