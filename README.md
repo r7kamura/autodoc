@@ -1,5 +1,6 @@
 # Autodoc
 
+[![test](https://github.com/r7kamura/autodoc/actions/workflows/test.yml/badge.svg)](https://github.com/r7kamura/autodoc/actions/workflows/test.yml)
 [![Gem Version](https://badge.fury.io/rb/autodoc.svg)](https://rubygems.org/gems/autodoc)
 
 Generate documentation from your rack application & request-spec.
