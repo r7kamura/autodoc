@@ -12,13 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Prefer `#media_type` to `#content_type` (for Rails 7's change).
 - Fix `ERB.new` arguments style.
 
-## 0.7.6
+## 0.7.6 - 2021-04-22
 
 ### Fixed
 
 - Replace `URI.unescape` with `URI.decode_www_form_component` for Ruby 3 support.
 
-## 0.7.5
+## 0.7.5 - 2021-02-16
 
 ### Fixed
 
