@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Prefer `#media_type` to `#content_type` (for Rails 7's change).
+
 ## 0.7.6
 
 ### Fixed
