@@ -33,7 +33,7 @@ module Autodoc
     end
 
     def render_toc
-      ERB.new(Autodoc.configuration.toc_template, nil, "-").result(binding)
+      ERB.new(Autodoc.configuration.toc_template, trim_mode: "-").result(binding)
     end
 
     def write_toc_html
@@ -42,7 +42,7 @@ module Autodoc
     end
 
     def render_toc_html
-      ERB.new(Autodoc.configuration.toc_html_template, nil, "-").result(binding)
+      ERB.new(Autodoc.configuration.toc_html_template, trim_mode: "-").result(binding)
     end
 
     def toc_path

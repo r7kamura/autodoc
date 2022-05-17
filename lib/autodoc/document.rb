@@ -27,7 +27,7 @@ module Autodoc
     end
 
     def render
-      ERB.new(Autodoc.configuration.template, nil, "-").result(binding)
+      ERB.new(Autodoc.configuration.template, trim_mode: "-").result(binding)
     end
 
     def title
