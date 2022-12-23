@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+
+- Change the order of documents to match the order of tests.
+
 ## 0.7.7 - 2022-05-17
 
 ### Fixed
