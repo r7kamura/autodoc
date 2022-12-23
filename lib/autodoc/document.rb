@@ -20,6 +20,10 @@ module Autodoc
       @example = example
     end
 
+    def line_number
+      @context.instance_variable_get(:@__inspect_output)[/:([\d]+)\)$/, 1].to_i
+    end
+
     def pathname
       @pathname ||= begin
         Autodoc.configuration.pathname + document_path_from_example.call(example)
