@@ -23,7 +23,7 @@ module Autodoc
     def write_documents
       @table.each do |pathname, documents|
         pathname.parent.mkpath
-        pathname.open("w") {|file| file << documents.map(&:render).join("\n").rstrip + "\n" }
+        pathname.open("w") {|file| file << documents.sort_by(&:line_number).map(&:render).join("\n").rstrip + "\n" }
       end
     end
 
