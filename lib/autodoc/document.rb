@@ -21,7 +21,7 @@ module Autodoc
     end
 
     def line_number
-      @context.instance_variable_get(:@__inspect_output)[/:([\d]+)\)$/, 1].to_i
+      @context.inspect[/:([\d]+)\)>$/, 1].to_i
     end
 
     def pathname
