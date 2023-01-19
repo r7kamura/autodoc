@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "bundler", "~> 1.3"
+gem "rails", "5.2.2"
+gem "rake"
+gem "sqlite3", "~> 1.3.13"
+
 group :test do
   gem "pry-rails"
   if ENV['RSPEC2']
