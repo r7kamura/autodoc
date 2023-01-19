@@ -3,9 +3,9 @@ source "https://rubygems.org"
 gemspec
 
 gem "bundler"
-gem "rails", "5.2.2"
+gem "rails"
 gem "rake"
-gem "sqlite3", "~> 1.3.13"
+gem "sqlite3"
 
 group :test do
   gem "pry-rails"
