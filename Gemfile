@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "bundler", "~> 1.3"
+gem "bundler"
 gem "rails", "5.2.2"
 gem "rake"
 gem "sqlite3", "~> 1.3.13"
