@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    autodoc (0.7.7)
+    autodoc (0.8.0)
       actionpack
       activesupport (>= 3.0.0)
       rspec
