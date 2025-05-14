@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.8.1 - 2025-05-14
+
 ### Fixed
 
 - Silence string literal freeze warnings on Ruby 3.4.
