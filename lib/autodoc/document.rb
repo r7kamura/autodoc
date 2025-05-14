@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "action_dispatch/http/request"
 require "active_support/core_ext/hash/slice"
 require "active_support/core_ext/string/strip"
@@ -230,13 +232,11 @@ module Autodoc
       end
 
       def to_s
-        string = ""
-        string << "#{body}#{payload}"
+        string = "#{body}#{payload}"
 
         if validator.respond_to? :validators
           validator.validators.each do |x|
-            string << "\n"
-            string << Parameter.new(x).to_s.indent(2)
+            string += "\n#{Parameter.new(x).to_s.indent(2)}"
           end
         end
 
@@ -254,9 +254,8 @@ module Autodoc
       end
 
       def payload
-        string = ""
-        string << " (#{assets.join(', ')})" if assets.any?
-        string << " - #{validator.options[:description]}" if validator.options[:description]
+        string = assets.any? ? " (#{assets.join(', ')})" : ""
+        string += " - #{validator.options[:description]}" if validator.options[:description]
         string
       end
 
