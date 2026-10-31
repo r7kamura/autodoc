@@ -18,7 +18,7 @@ gem "redcarpet", group: :test
 
 ## Usage
 Run rspec with AUTODOC=1 to generate documents for your request-specs tagged with `:autodoc`.
-example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/recipes.md) and [doc/toc.md](https://github.com/r7kamura/autodoc/blob/master/spec/dummy/doc/toc.md) from [spec/requests/recipes_spec.rb](https://github.com/r7kamura/autodoc/blob/master/spec/requests/recipes_spec.rb).
+example: Autodoc generates [doc/recipes.md](https://github.com/r7kamura/autodoc/blob/main/spec/dummy/doc/recipes.md) and [doc/toc.md](https://github.com/r7kamura/autodoc/blob/main/spec/dummy/doc/toc.md) from [spec/requests/recipes_spec.rb](https://github.com/r7kamura/autodoc/blob/main/spec/requests/recipes_spec.rb).
 
 ```sh
 # shell-command
@@ -82,10 +82,10 @@ You can configure `Autodoc.configuration` to change its behavior:
 * path - [String] location to put files (default: ./doc)
 * suppressed_request_header - [Strings] filtered request header keys
 * suppressed_response_header - [Strings] filtered response header keys
-* template - [String] ERB template for each document (default: [document.md.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/document.md.erb))
-* toc_template - [String] ERB template for ToC (default: [toc.md.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/toc.md.erb))
+* template - [String] ERB template for each document (default: [document.md.erb](https://github.com/r7kamura/autodoc/blob/main/lib/autodoc/templates/document.md.erb))
+* toc_template - [String] ERB template for ToC (default: [toc.md.erb](https://github.com/r7kamura/autodoc/blob/main/lib/autodoc/templates/toc.md.erb))
 * toc - [Boolean] whether to generate toc.md (default: false)
-* toc_html_template - [String] ERB template for html ToC (default: [toc.html.erb](https://github.com/r7kamura/autodoc/blob/master/lib/autodoc/templates/toc.html.erb))
+* toc_html_template - [String] ERB template for html ToC (default: [toc.html.erb](https://github.com/r7kamura/autodoc/blob/main/lib/autodoc/templates/toc.html.erb))
 * toc_html - [Boolean] whether to generate toc.html - a single page documentation with a toc (default: false)
 * document_path_from_example - [Proc] specify a Proc to change the naming rule of document file paths
 
