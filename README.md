@@ -1,7 +1,5 @@
 # Autodoc
 
-[![test](https://github.com/r7kamura/autodoc/actions/workflows/test.yml/badge.svg)](https://github.com/r7kamura/autodoc/actions/workflows/test.yml)
-
 Generate documentation from your rack application & request-spec.
 
 ## Installation
