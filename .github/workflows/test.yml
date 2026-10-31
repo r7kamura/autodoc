@@ -12,7 +12,9 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - 2.7.2
+          - '3.3'
+          - '3.4'
+          - '4.0'
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
