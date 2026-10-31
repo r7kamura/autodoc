@@ -6,6 +6,7 @@ require "autodoc/version"
 Gem::Specification.new do |spec|
   spec.name          = "autodoc"
   spec.version       = Autodoc::VERSION
+  spec.required_ruby_version = ">= 3.3"
   spec.authors       = ["Ryo Nakamura"]
   spec.email         = ["r7kamura@gmail.com"]
   spec.summary       = "Auto-generate JSON API documents from your request-specs."

@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -12,11 +12,13 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - 2.7.2
+          - '3.3'
+          - '3.4'
+          - '4.0'
     steps:
-    - uses: actions/checkout@v2.8.0
+    - uses: actions/checkout@v7
     - name: Set up Ruby
-      uses: ruby/setup-ruby@v1.336.0
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
