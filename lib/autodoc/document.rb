@@ -130,7 +130,7 @@ module Autodoc
           when request.headers["Content-Type"].try(:include?, "application/json")
             request_body_parsed_as_json
           else
-            request.body.string
+            request.body&.string
           end
         end
       end
